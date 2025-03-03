@@ -1,0 +1,103 @@
+---
+const slides = [
+  {
+    title: "Air Free HTML5 Bootstrap Template",
+    description: "Ink is a free html5 bootstrap and a multi-purpose template perfect for any type of websites. A combination of a minimal and modern design template. The features are big slider on homepage, smooth animation, product listing and many more",
+    image: "/images/img_bg_1.jpg",
+  },
+  {
+    title: "Ink Free HTML5 Bootstrap Template",
+    description: "Ink is a free html5 bootstrap and a multi-purpose template perfect for any type of websites. A combination of a minimal and modern design template. The features are big slider on homepage, smooth animation, product listing and many more",
+    image: "/images/img_bg_2.jpg",
+  },
+  {
+    title: "Travel Free HTML5 Bootstrap Template",
+    description: "Ink is a free html5 bootstrap and a multi-purpose template perfect for any type of websites. A combination of a minimal and modern design template. The features are big slider on homepage, smooth animation, product listing and many more",
+    image: "/images/img_bg_3.jpg",
+  },
+];
+---
+
+<div id="ja75-slider" class="bg-[#2A528A] py-28">
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="text-white animate-fade-in">
+        <h2 class="text-[40px] font-inconsolata font-normal mb-5">
+          Download Our Latest Free HTML5 Bootstrap Template
+        </h2>
+        <p class="text-[22px]">
+          Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
+        </p>
+      </div>
+      <div class="animate-fade-in">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            {slides.map((slide) => (
+              <div
+                class="swiper-slide bg-cover bg-top bg-no-repeat h-[600px] rounded-lg relative"
+                style={`background-image: url('${slide.image}');`}
+              >
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div class="container max-w-7xl mx-auto px-4 h-full flex items-end">
+                  <div class="p-8 bg-[#FEE856] rounded-lg shadow-xl w-full max-w-lg mb-8 slide-up opacity-0">
+                    <h2 class="text-xl font-inconsolata font-normal mb-4">{slide.title}</h2>
+                    <p class="text-lg">{slide.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+  import 'swiper/css/pagination';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const swiper = new Swiper('.swiper', {
+      modules: [Navigation, Pagination, Autoplay],
+      loop: true,
+      autoplay: {
+        delay: 5000, // 5 segundos por slide
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      on: {
+        slideChangeTransitionStart: () => {
+          // Ocultar todos los recuadros al cambiar de slide
+          document.querySelectorAll('.slide-up').forEach((el) => {
+            el.classList.remove('opacity-100');
+            el.classList.add('opacity-0');
+          });
+        },
+        slideChangeTransitionEnd: () => {
+          // Mostrar el recuadro del slide activo con retraso
+          const activeSlide = document.querySelector('.swiper-slide-active .slide-up');
+          if (activeSlide) {
+            setTimeout(() => {
+              activeSlide.classList.remove('opacity-0');
+              activeSlide.classList.add('opacity-100');
+            }, 500); // Retraso de 300ms tras el cambio de slide
+          }
+        },
+      },
+    });
+  });
+</script>

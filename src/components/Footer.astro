@@ -1,0 +1,80 @@
+---
+const links = [
+  { text: "Home", href: "#" },
+  { text: "Portfolio", href: "#" },
+  { text: "Blog", href: "#" },
+  { text: "About", href: "#" },
+];
+
+const categories = [
+  { text: "Landing Page", href: "#" },
+  { text: "Real Estate", href: "#" },
+  { text: "Personal", href: "#" },
+  { text: "Business", href: "#" },
+  { text: "e-Commerce", href: "#" },
+];
+
+const contactInfo = [
+  "198 West 21th Street, Suite 721 New York NY 10016",
+  "+ 1235 2355 98",
+  "info@yoursite.com",
+  "freehtml5.co",
+];
+---
+
+<footer id="ja75-footer" class="py-28">
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+      <div class="ja75-widget">
+        <h4 class="text-xl font-inconsolata font-normal mb-8">JA75</h4>
+        <p class="text-lg text-black">
+          Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.
+        </p>
+      </div>
+      <div class="ja75-widget md:order-2">
+        <h4 class="text-xl font-inconsolata font-normal mb-8">Links</h4>
+        <ul class="space-y-2">
+          {links.map((link) => (
+            <li>
+              <a href={link.href} class="text-black/50 hover:text-[#DD356E] transition duration-300">{link.text}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="ja75-widget md:order-3">
+        <h4 class="text-xl font-inconsolata font-normal mb-8">Categories</h4>
+        <ul class="space-y-2">
+          {categories.map((category) => (
+            <li>
+              <a href={category.href} class="text-black/50 hover:text-[#DD356E] transition duration-300">{category.text}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="ja75-widget md:order-1">
+        <h4 class="text-xl font-inconsolata font-normal mb-8">Contact Information</h4>
+        <ul class="space-y-2">
+          <li class="text-lg text-black">{contactInfo[0]}</li>
+          <li><a href="tel://1234567920" class="text-black/50 hover:text-[#DD356E] transition duration-300">{contactInfo[1]}</a></li>
+          <li><a href="mailto:info@yoursite.com" class="text-black/50 hover:text-[#DD356E] transition duration-300">{contactInfo[2]}</a></li>
+          <li><a href="https://freehtml5.co" class="text-black/50 hover:text-[#DD356E] transition duration-300">{contactInfo[3]}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center">
+      <p class="text-sm text-black">
+        <small class="block">© 2016 Free HTML5. All Rights Reserved.</small>
+        <small class="block">
+          Designed by <a href="http://freehtml5.co/" target="_blank" class="text-[#DD356E] hover:text-[#e14b7e] transition duration-300">FreeHTML5.co</a> Demo Images:
+          <a href="http://unsplash.co/" target="_blank" class="text-[#DD356E] hover:text-[#e14b7e] transition duration-300">Unsplash</a>
+        </small>
+      </p>
+      <ul class="flex justify-center space-x-4 mt-4">
+        <li><a href="#" class="text-[#DD356E] hover:text-[#e14b7e] transition duration-300"><span class="icon-[mdi:twitter] text-xl"></span></a></li>
+        <li><a href="#" class="text-[#DD356E] hover:text-[#e14b7e] transition duration-300"><span class="icon-[mdi:facebook] text-xl"></span></a></li>
+        <li><a href="#" class="text-[#DD356E] hover:text-[#e14b7e] transition duration-300"><span class="icon-[mdi:linkedin] text-xl"></span></a></li>
+        <li><a href="#" class="text-[#DD356E] hover:text-[#e14b7e] transition duration-300"><span class="icon-[mdi:dribbble] text-xl"></span></a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
