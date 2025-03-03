@@ -1,0 +1,75 @@
+---
+const posts = [
+  {
+    title: "Photoshoot On The Street",
+    date: "Feb. 15th 2016",
+    image: "/images/blog-1.jpg",
+    description: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    likes: 249,
+    views: 1308,
+  },
+  {
+    title: "Surfing at Philippines",
+    date: "Feb. 15th 2016",
+    image: "/images/blog-2.jpg",
+    description: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    likes: 249,
+    views: 1308,
+  },
+  {
+    title: "Focus On Underwater",
+    date: "Feb. 15th 2016",
+    image: "/images/blog-3.jpg",
+    description: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    likes: 249,
+    views: 1308,
+  },
+];
+---
+
+<div id="ja75-blog" class="py-28">
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="text-center mb-20 animate-fade-in">
+      <h2 class="text-[40px] font-inconsolata font-normal text-black leading-tight">
+        Recent Post
+      </h2>
+      <p class="text-lg text-gray-500">
+        Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      {posts.map((post) => (
+        <div class="ja75-blog-post animate-fade-in">
+          <a
+            href="#"
+            class="block bg-cover bg-center bg-no-repeat h-[300px] rounded-t-lg"
+            style={`background-image: url('${post.image}');`}
+          ></a>
+          <div class="p-8 bg-white shadow-md rounded-b-lg">
+            <span class="text-sm text-gray-400 mb-5 block">{post.date}</span>
+            <h3 class="text-2xl font-inconsolata font-normal mb-5">
+              <a href="#" class="text-black hover:text-[#DD356E] transition duration-300">{post.title}</a>
+            </h3>
+            <p class="text-lg text-black mb-5">{post.description}</p>
+            <ul class="flex items-center justify-between border-t pt-5 text-sm text-gray-600">
+              <li class="flex items-center space-x-1">
+                <span class="icon-[mdi:heart] text-[#DD356E]"></span>
+                <span>{post.likes}</span>
+              </li>
+              <li class="flex items-center space-x-1">
+                <span class="icon-[mdi:eye] text-[#DD356E]"></span>
+                <span>{post.views.toLocaleString()}</span>
+              </li>
+              <li>
+                <a href="#" class="text-black hover:text-[#DD356E] transition duration-300 flex items-center space-x-1">
+                  <span>Read More</span>
+                  <span class="icon-[mdi:arrow-right] text-xl"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

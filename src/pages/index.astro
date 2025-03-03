@@ -1,17 +1,18 @@
 ---
-import "../styles/global.css";
-import Nav from '../components/Nav.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Features from '../components/Features.astro';
+import Wireframe from '../components/Wireframe.astro';
+import Slider from '../components/Slider.astro';
+import Blog from '../components/Blog.astro';
+import CTA from '../components/CTA.astro';
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Juan Amieva - Portfolio</title>
-  </head>
-  <body class="bg-green-300">
-    <Nav />
-    <h1 class="text-3xl font-bold underline text-blue-500">Hola, soy Juan Amieva</h1>
-  </body>
-</html>
+<MainLayout>
+  <Header />
+  <Features />
+  <Wireframe />
+  <Slider />
+  <Blog />
+  <CTA />
+</MainLayout>
