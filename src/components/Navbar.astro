@@ -2,250 +2,118 @@
 
 ---
 
-<nav class="ja75-nav bg-white fixed top-0 left-0 w-full z-50">
-  <div class="top-menu py-0">
-    <div class="container max-w-7xl mx-auto px-2">
-      <div class="flex justify-between items-center">
-        <div class="w-1/6">
-          <div id="ja75-logo">
-            <a href="index.html" class="text-3xl font-bold font-inconsolata">
-              JA75<span class="text-[#DD356E]">.</span>
-            </a>
-          </div>
-        </div>
+<nav
+  class="ja75-nav fixed w-full bg-white text-black z-50 flex items-center justify-between p-6"
+>
 
-        <button
-          id="ja75-nav-toggle"
-          class="md:hidden text-gray-700 focus:outline-none relative"
-        >
-          <!-- Icono de hamburguesa, que se transformará en una X -->
-          <div class="hamburger-icon">
-            <div class="line line1"></div>
-            <div class="line line2"></div>
-            <div class="line line3"></div>
-          </div>
-        </button>
+  <!-- Logo -->
+  <div class="text-4xl font-bold font-inconsolata"><a href="index.html">JA75<span class="text-red-600">.</span></a></div>
 
-        <!-- <button
-          id="ja75-nav-toggle"
-          class="md:hidden text-gray-700 focus:outline-none"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-        <button
-          id="ja75-nav-close"
-          class="md:hidden text-gray-700 focus:outline-none hidden"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button> -->
+  <!-- Ícono de hamburguesa personalizado -->
+  <button
+    id="ja75-nav-toggle"
+    class="md:hidden focus:outline-none relative z-[60]"
+    aria-label="Toggle menu"
+  >
+    <div class="hamburger-icon">
+      <span class="line line1"></span>
+      <span class="line line2"></span>
+      <span class="line line3"></span>
+    </div>
+  </button>
 
-        <div
-          id="ja75-nav-menu"
-          class="hidden md:flex md:w-5/6 flex-col md:flex-row md:items-center md:justify-end space-y-4 md:space-y-0 md:space-x-4 mt-4 md:mt-0"
-        >
-          <a
-            href="index.html"
-            class="text-lg text-gray-700 hover:text-black transition duration-500 py-2 md:py-8 px-4 block md:inline-block"
-            >Home</a
-          >
-          <a
-            href="portfolio.html"
-            class="text-lg text-gray-700 hover:text-black transition duration-500 py-2 md:py-8 px-4 block md:inline-block"
-            >Portfolio</a
-          >
-          <div class="relative group">
-            <a
-              href="blog.html"
-              class="text-lg text-gray-700 hover:text-black transition duration-500 py-2 md:py-8 px-4 block md:inline-block"
-              >Blog</a
-            >
-            <ul
-              class="absolute left-0 top-full invisible opacity-0 group-hover:visible group-hover:opacity-100 bg-black text-white shadow-lg rounded p-5 w-36 transition-opacity duration-0 md:transition-opacity md:duration-300 space-y-2"
-            >
-              <li>
-                <a
-                  href="#"
-                  class="block text-sm text-gray-400 hover:text-white py-1"
-                  >Web Design</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="block text-sm text-gray-400 hover:text-white py-1"
-                  >eCommerce</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="block text-sm text-gray-400 hover:text-white py-1"
-                  >Branding</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="block text-sm text-gray-400 hover:text-white py-1"
-                  >API</a
-                >
-              </li>
-            </ul>
-          </div>
-          <a
-            href="about.html"
-            class="text-lg text-gray-700 hover:text-black transition duration-500 py-2 md:py-8 px-4 block md:inline-block"
-            >About</a
-          >
-          <a
-            href="contact.html"
-            class="text-lg text-gray-700 hover:text-black transition duration-500 py-2 md:py-8 px-4 block md:inline-block"
-            >Contact</a
-          >
-          <a href="#" class="text-lg py-2 md:py-8 px-4 block md:inline-block">
-            <span
-              class="bg-[#DD356E] text-white px-4 py-1 rounded-full inline-block transition-shadow duration-300 hover:shadow-lg"
-              >Login</span
-            >
-          </a>
-        </div>
-      </div>
+  <!-- Overlay con transición -->
+  <div
+    id="overlay"
+    class="fixed inset-0 bg-gray-900 bg-opacity-50 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out z-40"
+  >
+  </div>
+
+  <!-- Menú lateral -->
+  <div
+    id="mobile-menu"
+    class="fixed inset-y-0 right-0 w-0 pt-14 bg-white text-black transition-all duration-300 ease-in-out overflow-hidden md:hidden z-50"
+  >
+    <div class="p-4 flex flex-col h-full">
+      <ul class="space-y-4 mt-4 flex-grow">
+        <li><a href="#" class="block hover:text-gray-300">Inicio</a></li>
+        <li><a href="#" class="block hover:text-gray-300">Acerca</a></li>
+        <li><a href="#" class="block hover:text-gray-300">Servicios</a></li>
+        <li><a href="#" class="block hover:text-gray-300">Contacto</a></li>
+      </ul>
     </div>
   </div>
+
+  <!-- Menú desktop -->
+  <ul class="hidden md:flex space-x-6 text-2xl">
+    <li><a href="#" class="hover:text-gray-300">Inicio</a></li>
+    <li><a href="#" class="hover:text-gray-300">Acerca</a></li>
+    <li><a href="#" class="hover:text-gray-300">Servicios</a></li>
+    <li><a href="#" class="hover:text-gray-300">Contacto</a></li>
+  </ul>
 </nav>
 
 <script>
-  // document.addEventListener("DOMContentLoaded", () => {
-  //   const menuBtn = document.getElementById("ja75-nav-toggle");
-  //   const menu = document.getElementById("ja75-nav-menu");
+  const menuToggle = document.getElementById("ja75-nav-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const overlay = document.getElementById("overlay");
 
-  //   if (menuBtn && menu) {
-  //     menuBtn.addEventListener("click", () => {
-  //       // Alternar la visibilidad del menú
-  //       menu.classList.toggle("hidden");
+  if (menuToggle && mobileMenu && overlay) {
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("open");
+      mobileMenu.classList.toggle("w-0");
+      mobileMenu.classList.toggle("w-1/4");
+      overlay.classList.toggle("opacity-0");
+      overlay.classList.toggle("pointer-events-none");
+    });
 
-  //       // Alternar la visibilidad del botón
-  //       menuBtn.classList.toggle("hidden");
-
-  //       // Log para verificar el cambio
-  //       console.log(
-  //         "Menu toggled, visibility:",
-  //         !menu.classList.contains("hidden")
-  //       );
-  //     });
-  //   } else {
-  //     console.error("Menu button or menu not found");
-  //   }
-  // });
-  //   document.addEventListener("DOMContentLoaded", () => {
-  //   const menuBtn = document.getElementById("ja75-nav-toggle");
-  //   const closeBtn = document.getElementById("ja75-nav-close"); // Nuevo botón de cierre
-  //   const menu = document.getElementById("ja75-nav-menu");
-
-  //   if (menuBtn && menu && closeBtn) {
-  //     // Mostrar y ocultar el menú al hacer clic en el botón hamburguesa
-  //     menuBtn.addEventListener("click", () => {
-  //       menu.classList.toggle("hidden");
-  //       closeBtn.classList.toggle("hidden"); // Mostrar el botón de cierre
-  //       menuBtn.classList.toggle("hidden"); // Ocultar el botón hamburguesa
-
-  //       console.log('Menu toggled, visibility:', !menu.classList.contains('hidden'));
-  //     });
-
-  //     // Mostrar y ocultar el menú al hacer clic en el botón de cierre
-  //     closeBtn.addEventListener("click", () => {
-  //       menu.classList.toggle("hidden");
-  //       closeBtn.classList.toggle("hidden"); // Ocultar el botón de cierre
-  //       menuBtn.classList.toggle("hidden"); // Mostrar el botón hamburguesa
-
-  //       console.log('Menu toggled, visibility:', !menu.classList.contains('hidden'));
-  //     });
-  //   }
-  // });
-
-  // document.addEventListener("DOMContentLoaded", () => {
-  //   const menuBtn = document.getElementById("ja75-nav-toggle");
-
-  //   if (menuBtn) {
-  //     menuBtn.addEventListener("click", () => {
-  //       // Alternar la clase "open" para activar la animación de la hamburguesa a la X
-  //       menuBtn.classList.toggle("open");
-
-  //       console.log('Icono cambiado:', menuBtn.classList.contains("open") ? 'X' : 'Hamburguesa');
-  //     });
-  //   }
-  // });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const menuBtn = document.getElementById("ja75-nav-toggle");
-
-    if (menuBtn) {
-      menuBtn.addEventListener("click", () => {
-        // Alternar la clase "open" para activar la animación de la hamburguesa a la X
-        menuBtn.classList.toggle("open");
-
-        console.log(
-          "Icono cambiado:",
-          menuBtn.classList.contains("open") ? "X" : "Hamburguesa"
-        );
-      });
-    }
-  });
+    overlay.addEventListener("click", () => {
+      menuToggle.classList.remove("open");
+      mobileMenu.classList.add("w-0");
+      mobileMenu.classList.remove("w-1/4");
+      overlay.classList.add("opacity-0");
+      overlay.classList.add("pointer-events-none");
+    });
+  }
 </script>
 
 <style>
-  /* Estilos de las líneas del icono de hamburguesa */
-#ja75-nav-toggle .hamburger-icon .line {
-  background-color: #333; /* Color de las líneas */
-  height: 3px;
-  margin: 4px 0;
-  transition:
-    transform 0.3s ease,
-    opacity 0.3s ease; /* Transición suave */
-}
+  #mobile-menu {
+    top: 0;
+  }
 
-#ja75-nav-toggle .line1,
-#ja75-nav-toggle .line2,
-#ja75-nav-toggle .line3 {
-  width: 25px;
-  transform-origin: left center; /* Establecemos el pivote en el extremo izquierdo */
-}
+  /* Estilos para las líneas del ícono de hamburguesa */
+  #ja75-nav-toggle .hamburger-icon .line {
+    background-color: #000;
+    height: 3px;
+    margin: 4px 0;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+    display: block;
+  }
 
-/* Transformaciones cuando se hace clic en el botón */
-#ja75-nav-toggle.open .line1 {
-  transform: rotate(35deg); /* Primera línea se rota para formar una "X" */
-}
+  #ja75-nav-toggle .line1,
+  #ja75-nav-toggle .line2,
+  #ja75-nav-toggle .line3 {
+    width: 25px;
+    transform-origin: left center;
+  }
 
-#ja75-nav-toggle.open .line2 {
-  opacity: 0; /* Se oculta la segunda línea */
-}
+  #ja75-nav-toggle.open .line1 {
+    transform: rotate(35deg);
+  }
 
-#ja75-nav-toggle.open .line3 {
-  transform: rotate(-35deg); /* Segunda línea se rota para formar la otra parte de la "X" */
-}
+  #ja75-nav-toggle.open .line2 {
+    opacity: 0;
+  }
 
+  #ja75-nav-toggle.open .line3 {
+    transform: rotate(-35deg);
+  }
+
+  /* Asegurar que el overlay sea clickable solo cuando esté visible */
+  #overlay:not(.opacity-0) {
+    pointer-events: auto;
+  }
 </style>
