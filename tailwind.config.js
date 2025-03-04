@@ -1,32 +1,3 @@
-// /** @type {import('tailwindcss').Config} */
-// export default {
-//   content: ['./src/**/*.{astro,html,js,jsx,ts,tsx}'],
-//   theme: {
-//     extend: {
-//       colors: {
-//         jaPrimary: '#1E90FF',
-//         jaSecondary: '#333'
-//       }
-//     }
-//   },
-//   plugins: []
-// };
-
-// /** @type {import('tailwindcss').Config} */
-// module.exports = {
-//   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-//   theme: {
-//     extend: {
-//       fontFamily: {
-//         inconsolata: ['Inconsolata', 'sans-serif'],
-//       },
-//     },
-//   },
-//   plugins: [
-//     require('@iconify/tailwind').addDynamicIconSelectors(),
-//   ],
-// };
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
