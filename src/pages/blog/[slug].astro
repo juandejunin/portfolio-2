@@ -1,0 +1,39 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content'; // Corregido: "clansimport" → "import"
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post: CollectionEntry<'blog'>) => ({
+    params: { slug: post.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const post: CollectionEntry<'blog'> = await getEntry('blog', slug);
+const { Content } = await post.render();
+---
+<MainLayout>
+    <html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>{post.data.title} - Juan Amieva</title>
+  </head>
+  <body>
+    <article class="container max-w-7xl mx-auto px-4 py-28">
+      <h1 class="text-4xl font-inconsolata font-normal text-black mb-5">
+        {post.data.title}
+      </h1>
+      <p class="text-sm text-gray-400 mb-5">
+        {post.data.date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </p>
+      <p class="text-lg text-black mb-5">{post.data.description}</p>
+      <div class="prose text-black">
+        <Content />
+      </div>
+    </article>
+  </body>
+</html>
+
+</MainLayout>
