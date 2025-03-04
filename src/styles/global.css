@@ -39,3 +39,7 @@ body {
 .swiper-pagination-bullet-active {
   background: #fff;
 }
+
+svg {
+  fill: currentColor; /* Permite que el color se herede de text-[#DD356E] */
+}
