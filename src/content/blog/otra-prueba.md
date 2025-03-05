@@ -1,5 +1,5 @@
 ---
-title: "Explorando el sonido más allá del arte"
+title: "Explowerwerwerrando el sonido más allá del arte"
 date: 2025-02-27
 description: "Reflexiones sobre 30 años investigando el sonido como arte, herramienta y comunicación."
 ---

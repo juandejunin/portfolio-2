@@ -7,7 +7,6 @@ const recentPosts = posts
   .sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 3);
 
-// Función para generar el resumen
 function getSummary(description: string): string {
   return description.length > 100 
     ? description.slice(0, 100) + '...' 
@@ -50,6 +49,16 @@ function getSummary(description: string): string {
                 Mostrar más
               </button>
             )}
+            {post.data.pdf && (
+              <a
+                href={post.data.pdf}
+                download
+                class="text-[#DD356E] hover:text-[#e14b7e] transition duration-300 flex items-center space-x-1 mt-2"
+              >
+                <span>Descargar PDF</span>
+                <img src="/icons/download.svg" alt="Download" class="w-5 h-5" />
+              </a>
+            )}
           </div>
         </div>
       ))}
@@ -61,9 +70,9 @@ function getSummary(description: string): string {
   document.querySelectorAll('.toggle-text').forEach((button) => {
     button.addEventListener('click', () => {
       const summary = button.previousElementSibling as HTMLElement;
-      const fullText = summary.dataset.fullText;
+      const fullText = summary.dataset.fullText ?? '';
       if (summary.textContent === fullText) {
-        summary.textContent = fullText!.slice(0, 100) + '...';
+        summary.textContent = fullText.slice(0, 100) + '...';
         button.textContent = 'Mostrar más';
       } else {
         summary.textContent = fullText;
@@ -84,7 +93,7 @@ function getSummary(description: string): string {
     flex-direction: column;
   }
   .summary {
-    min-height: 4rem; /* Asegura altura uniforme */
+    min-height: 4rem;
     margin-bottom: 1rem;
   }
   .toggle-text {

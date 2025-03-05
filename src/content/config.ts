@@ -6,6 +6,7 @@ const blogCollection = defineCollection({
     title: z.string(),
     date: z.date(),
     description: z.string(),
+    pdf: z.string().optional(), // Campo opcional para la ruta del PDF
   }),
 });
 

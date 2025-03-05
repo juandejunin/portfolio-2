@@ -1,7 +1,7 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
-import type { CollectionEntry } from 'astro:content'; // Corregido: "clansimport" → "import"
 import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection, getEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -11,29 +11,35 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-const post: CollectionEntry<'blog'> = await getEntry('blog', slug);
+const postEntry = await getEntry('blog', slug);
+if (!postEntry) {
+  return Astro.redirect('/404');
+}
+const post: CollectionEntry<'blog'> = postEntry;
 const { Content } = await post.render();
 ---
-<MainLayout>
-    <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>{post.data.title} - Juan Amieva</title>
-  </head>
-  <body>
-    <article class="container max-w-7xl mx-auto px-4 py-28">
-      <h1 class="text-4xl font-inconsolata font-normal text-black mb-5">
-        {post.data.title}
-      </h1>
-      <p class="text-sm text-gray-400 mb-5">
-        {post.data.date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
-      </p>
-      <p class="text-lg text-black mb-5">{post.data.description}</p>
-      <div class="prose text-black">
-        <Content />
-      </div>
-    </article>
-  </body>
-</html>
 
+<MainLayout title={post.data.title}>
+  <article class="container max-w-7xl mx-auto px-4 py-28">
+    <h1 class="text-4xl font-inconsolata font-normal text-black mb-5">
+      {post.data.title}
+    </h1>
+    <p class="text-sm text-gray-400 mb-5">
+      {post.data.date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+    </p>
+    <p class="text-lg text-black mb-5">{post.data.description}</p>
+    <div class="prose text-black mb-5">
+      <Content />
+    </div>
+    {post.data.pdf && (
+      <a
+        href={post.data.pdf}
+        download
+        class="text-[#DD356E] hover:text-[#e14b7e] transition duration-300 flex items-center space-x-1"
+      >
+        <span>Descargar PDF</span>
+        <img src="/icons/download.svg" alt="Download" class="w-5 h-5" />
+      </a>
+    )}
+  </article>
 </MainLayout>
