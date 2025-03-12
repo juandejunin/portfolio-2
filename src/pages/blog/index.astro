@@ -1,103 +1,15 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
-
-const posts = await getCollection('blog');
-const sortedPosts = posts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => b.data.date.getTime() - a.data.date.getTime());
-
-function getSummary(description: string): string {
-  return description.length > 100 
-    ? description.slice(0, 100) + '...' 
-    : description;
-}
+import MainLayout from "../../layouts/MainLayout.astro";
+import BlogPosts from "../../components/BlogPosts.astro"; // Asegúrate de ajustar la ruta
+import CTA from "../../components/CTA.astro";
 ---
 
 <MainLayout title="Blog">
-  <section class="py-28">
-    <div class="container max-w-7xl mx-auto px-4">
-      <div class="text-center mb-20 animate-fade-in">
-        <h1 class="text-[40px] font-inconsolata font-normal text-black leading-tight">
-          Blog
-        </h1>
-        <p class="text-lg text-gray-500">
-          Reflexiones sobre sonido, código y sistemas.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-        {sortedPosts.map((post: CollectionEntry<'blog'>) => (
-          <div class="ja75-blog-post animate-fade-in">
-            <a
-              href={`/blog/${post.slug}`}
-              class="block bg-cover bg-center bg-no-repeat h-[300px] rounded-t-lg"
-              style="background-image: url('/images/blog-placeholder.jpg');"
-            ></a>
-            <div class="p-8 bg-white shadow-md rounded-b-lg">
-              <span class="text-sm text-gray-400 mb-5 block">
-                {post.data.date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
-              </span>
-              <h3 class="text-2xl font-inconsolata font-normal mb-5">
-                <a href={`/blog/${post.slug}`} class="text-black hover:text-[#DD356E] transition duration-300">
-                  {post.data.title}
-                </a>
-              </h3>
-              <p class="text-lg text-black mb-5 summary" data-full-text={post.data.description}>
-                {getSummary(post.data.description)}
-              </p>
-              {post.data.description.length > 100 && (
-                <button class="text-black hover:text-[#DD356E] transition duration-300 toggle-text">
-                  Mostrar más
-                </button>
-              )}
-              {post.data.pdf && (
-                <a
-                  href={post.data.pdf}
-                  download
-                  class="text-[#DD356E] hover:text-[#e14b7e] transition duration-300 flex items-center space-x-1 mt-2"
-                >
-                  <span>Descargar PDF</span>
-                  <img src="/icons/download.svg" alt="Download" class="w-5 h-5" />
-                </a>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <script>
-    document.querySelectorAll('.toggle-text').forEach((button) => {
-      button.addEventListener('click', () => {
-        const summary = button.previousElementSibling as HTMLElement;
-        const fullText = summary.dataset.fullText ?? '';
-        if (summary.textContent === fullText) {
-          summary.textContent = fullText.slice(0, 100) + '...';
-          button.textContent = 'Mostrar más';
-        } else {
-          summary.textContent = fullText;
-          button.textContent = 'Mostrar menos';
-        }
-      });
-    });
-  </script>
-
-  <style>
-    .ja75-blog-post {
-      display: flex;
-      flex-direction: column;
-    }
-    .ja75-blog-post .p-8 {
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .summary {
-      min-height: 4rem;
-      margin-bottom: 1rem;
-    }
-    .toggle-text {
-      cursor: pointer;
-    }
-  </style>
+  <BlogPosts
+    title="Blog"
+    titleTag="h1"
+    introText="Reflexiones sobre sonido, código y sistemas."
+    introTextColor="text-gray-500"
+  />
+  <CTA />
 </MainLayout>

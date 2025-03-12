@@ -39,7 +39,7 @@ const features = [
 ];
 ---
 
-<div id="ja75-features" class="bg-[#FEE856] py-28">
+<div id="ja75-features" class=" py-28">
   <div class="container max-w-7xl mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
       {features.map((feature) => (
@@ -49,9 +49,9 @@ const features = [
           </span>
           <div class="flex-1">
             <h3 class="text-2xl font-inconsolata font-normal mb-2">{feature.title}</h3>
-            <p class="text-[15px] text-black mb-2">{feature.description}</p>
+            <p class="text-[15px] text-white mb-2">{feature.description}</p>
             <p>
-              <a href="#" class="text-black hover:text-[#DD356E] transition duration-300 flex items-center space-x-1">
+              <a href="#" class="text-white hover:text-[#DD356E] transition duration-300 flex items-center space-x-1">
                 <span>Descubre más</span>
                 <img src="/icons/arrow-right.svg" alt="Arrow right" class="w-5 h-5" />
               </a>
@@ -72,50 +72,3 @@ const features = [
     animation: fade-in 1s ease-out forwards;
   }
 </style>
-
-<!-- <div id="ja75-features" class="bg-[#FEE856] py-28">
-  <div class="container max-w-7xl mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-      {
-        features.map((feature) => (
-          <div class="flex items-start space-x-4 animate-fade-in">
-            <span class="flex items-center justify-center w-16 h-16 bg-white rounded-full">
-              <img src={feature.icon} alt={feature.title} class="w-8 h-8 text-[#DD356E]" />
-            </span>
-            <div class="flex-1">
-              <h3 class="text-2xl font-inconsolata font-normal mb-2">
-                {feature.title}
-              </h3>
-              <p class="text-[15px] text-black mb-2">{feature.description}</p>
-              <p>
-                <a
-                  href="#"
-                  class="text-black hover:text-[#DD356E] transition duration-300 flex items-center space-x-1"
-                >
-                  <span>Descubre más</span>
-                  <span class="icon-[mdi:arrow-right] text-xl" />
-                </a>
-              </p>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </div>
-</div>
-
-<style>
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  .animate-fade-in {
-    animation: fade-in 1s ease-out forwards;
-  }
-</style> -->

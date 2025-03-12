@@ -1,17 +1,18 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout title="Contacto - Juan Amieva">
-  <section id="ja75-contact" class="py-28 bg-[#FEE856]">
+  <section id="ja75-contact" class="py-28">
     <div class="container max-w-7xl mx-auto px-4">
       <!-- Título y descripción -->
       <div class="text-center mb-20 animate-fade-in">
-        <h2 class="text-[40px] font-inconsolata font-normal text-black mb-5">
+        <h2 class="text-[40px] font-inconsolata font-normal text-white mb-5">
           ¡Hablemos!
         </h2>
-        <p class="text-lg text-black/80">
-          ¿Tienes un proyecto sonoro o digital en mente? Con 30 años explorando el sonido y 5 años desarrollando software, estoy listo para colaborar contigo.
+        <p class="text-lg text-white/80">
+          ¿Tienes un proyecto sonoro o digital en mente? estoy listo para
+          colaborar contigo.
         </p>
       </div>
 
@@ -19,29 +20,39 @@ import MainLayout from '../layouts/MainLayout.astro';
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Información de contacto -->
         <div class="md:col-span-1 animate-fade-in">
-          <h3 class="text-2xl font-inconsolata font-normal mb-8 text-black">
+          <h3 class="text-2xl font-inconsolata font-normal mb-8 text-white">
             Contacto
           </h3>
-          <ul class="space-y-4 text-lg text-black">
+          <ul class="space-y-4 text-lg text-white">
             <li class="flex items-start">
-              <span class="icon-[mdi:map-marker] w-6 h-6 mr-2 text-[#DD356E]"></span>
+              <span class="icon-[mdi:map-marker] w-6 h-6 mr-2 text-[#DD356E]"
+              ></span>
               Buenos Aires, Argentina
             </li>
             <li class="flex items-start">
               <span class="icon-[mdi:phone] w-6 h-6 mr-2 text-[#DD356E]"></span>
-              <a href="tel:+5491112345678" class="hover:text-[#DD356E] transition duration-300">
+              <a
+                href="tel:+5491112345678"
+                class="hover:text-[#DD356E] transition duration-300"
+              >
                 +54 9 11 1234-5678
               </a>
             </li>
             <li class="flex items-start">
               <span class="icon-[mdi:email] w-6 h-6 mr-2 text-[#DD356E]"></span>
-              <a href="mailto:juan@amieva.com" class="hover:text-[#DD356E] transition duration-300">
+              <a
+                href="mailto:juan@amieva.com"
+                class="hover:text-[#DD356E] transition duration-300"
+              >
                 juan@amieva.com
               </a>
             </li>
             <li class="flex items-start">
               <span class="icon-[mdi:web] w-6 h-6 mr-2 text-[#DD356E]"></span>
-              <a href="https://juanamieva.com" class="hover:text-[#DD356E] transition duration-300">
+              <a
+                href="https://juanamieva.com"
+                class="hover:text-[#DD356E] transition duration-300"
+              >
                 juanamieva.com
               </a>
             </li>
@@ -56,7 +67,7 @@ import MainLayout from '../layouts/MainLayout.astro';
                 <input
                   type="text"
                   name="name"
-                  class="w-full h-12 px-4 text-lg font-inconsolata border-2 border-black/10 rounded-md focus:border-[#DD356E] focus:outline-none"
+                  class="w-full h-12 px-4 text-lg font-inconsolata border-2 border-white/10 rounded-md focus:border-[#DD356E] focus:outline-none"
                   placeholder="Nombre"
                   required
                 />
@@ -76,13 +87,12 @@ import MainLayout from '../layouts/MainLayout.astro';
                 name="message"
                 class="w-full h-40 px-4 py-2 text-lg font-inconsolata border-2 border-black/10 rounded-md focus:border-[#DD356E] focus:outline-none"
                 placeholder="Tu mensaje"
-                required
-              ></textarea>
+                required></textarea>
             </div>
             <div class="form-group">
               <button
                 type="submit"
-                class="bg-[#DD356E] text-white text-lg font-inconsolata uppercase py-4 px-12 rounded-full hover:bg-[#e14b7e] hover:shadow-lg transition duration-300"
+                class="bg-astro-primary-orange text-astro-primary-dark text-lg font-inconsolata uppercase py-4 px-12 rounded-full hover:bg-[#e14b7e] hover:shadow-lg transition duration-300"
               >
                 Enviar mensaje
               </button>
@@ -96,8 +106,14 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 <style>
   @keyframes fade-in {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   .animate-fade-in {
     animation: fade-in 1s ease-out forwards;

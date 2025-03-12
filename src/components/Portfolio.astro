@@ -1,0 +1,219 @@
+---
+import { Image } from "astro:assets";
+
+interface Project {
+  title: string;
+  image: string;
+  description: string;
+  link?: string;
+  pdf?: string;
+}
+
+const projects: Project[] = [
+
+  {
+    title: "Repositorio Git: Captura de Leads",
+    image: "/images/portfolio/swagger-back.png",
+    description:
+      "Backend en Node.js, Express y TypeScript para capturar leads (nombre y correo), con MongoDB y Redis. Maneja 1787.74 solicitudes/seg, incluye validación, protección contra XSS y despliegue con Docker. Envío asincrónico de correos para mejor rendimiento.",
+    link: "https://github.com/juandejunin/service-funnel.git",
+  },
+  {
+    title: "Repositorio Git: Captura de Leads - Frontend",
+    image: "/images/portfolio/captura-tusistema.png",
+    description:
+      "Frontend responsivo en Astro, Tailwind y React para capturar leads (nombre y correo), integrado con backend en Node.js. Usa componentes modulares y formulario React con validación en cliente. Optimizado para móviles, tabletas y escritorios, con enfoque en rendimiento y SEO.",
+    link: "https://github.com/juandejunin/galactic-gravity.git",
+  },
+  {
+    title: "Página web en producción: Captura de Leads",
+    image: "/images/portfolio/tusistema.es-captura.png",
+    description:
+      "Proyecto full-stack en https://tusistema.es/, alojado en Ubuntu. Backend (Node.js, Express, MongoDB, Redis) desplegado con Docker, frontend (Astro, Tailwind, React) servido por Nginx con HTTPS (certificados SSL). Formulario responsivo para capturar leads, optimizado para rendimiento, seguridad y SEO.",
+    link: "https://tusistema.es/",
+  },
+  {
+    title: "Adios nonino con Raul lavie",
+    image: "/images/portfolio/raul-lavie.png",
+    description:
+      "En 2017, participé como tubista en la grabación del CD Sonidos de la Patria de la Banda Militar Conjunta Argentina, integrada por músicos del Ejército, la Armada y la Fuerza Aérea. Como parte de este proyecto, Raúl Lavié fue invitado a interpretar 'Caminito' junto a la banda. La grabación se llevó a cabo en los estudios de Fort Music, en Buenos Aires, con un enfoque profesional en la captación y mezcla del sonido para reflejar con fidelidad la interpretación del artista y la ejecución instrumental.",
+    link: "https://github.com/juandejunin/service-funnel.git",
+  },
+  {
+    title: "Antartida",
+    image: "/images/portfolio/antartida.png",
+    description:
+      "En 2016, formé parte de la Banda Militar Conjunta Argentina en una misión histórica: brindar un concierto en la Antártida. Junto a 43 músicos del Ejército, la Armada y la Fuerza Aérea, viajamos al continente blanco para participar en el Concierto por la Paz, un evento concebido para enviar un mensaje de unión, paz y conciencia ambiental. Interpretamos un repertorio variado, que incluyó Adiós Nonino de Astor Piazzolla. La presentación se llevó a cabo en condiciones extremas, lo que representó un desafío tanto logístico como musical, destacando el compromiso y la precisión técnica de la banda en un entorno único.",
+    link: "https://github.com/juandejunin/service-funnel.git",
+  },
+  {
+    title: "Mas alla del arte",
+    image: "/images/portfolio/antartida.png",
+    description:
+      "Ensayo sobre el error de englobar todas las prácticas sonoras dentro de la música.",
+    link: "https://github.com/juandejunin/service-funnel.git",
+  },
+];
+---
+
+<section id="ja75-portfolio" class="py-28">
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="text-center mb-20 animate-fade-in">
+      <h2 class="text-[40px] font-inconsolata font-normal mb-5">
+        Mi Portafolio
+      </h2>
+      <p class="text-lg">
+        Moldeo sonidos y escribo código porque me apasiona, y lo hago para que
+        cada pieza encaje como debe.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 auto-rows-auto">
+      {projects.map((project) => (
+        <div class="ja75-portfolio-item animate-fade-in flex flex-col h-[500px]">
+          <div class="portfolio-entry rounded-t-lg overflow-hidden aspect-[4/3]">
+            <Image
+              src={project.image}
+              alt={project.title}
+              width={400}
+              height={300}
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="portfolio-text p-6 bg-white shadow-md rounded-b-lg flex flex-col flex-1">
+            <h3 class="text-2xl font-inconsolata font-normal text-black mb-3 line-clamp-2">
+              {project.title}
+            </h3>
+            <p
+              class="text-lg text-black/70 description overflow-hidden"
+              style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;"
+            >
+              {project.description}
+            </p>
+            <div class="flex justify-between items-center mt-4 pt-4 border-t border-black/10">
+              <button class="toggle-text text-sm text-black/50 hover:text-[#DD356E] transition-colors">
+                Leer más
+              </button>
+              {project.link && (
+                <a
+                  href={project.link}
+                  class="text-sm text-black/50 hover:text-[#DD356E] transition-colors"
+                >
+                  Ver más
+                </a>
+              )}
+              {project.pdf && (
+                <a
+                  href={project.pdf}
+                  download
+                  class="text-[#DD356E] hover:text-[#e14b7e] transition-colors flex items-center space-x-1"
+                >
+                  <span>Descargar PDF</span>
+                  <img
+                    src="/icons/download.svg"
+                    alt="Download"
+                    class="w-5 h-5"
+                  />
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleButtons = document.querySelectorAll(".toggle-text");
+    toggleButtons.forEach((button) => {
+      let modal: HTMLElement | null = null;
+      let overlay: HTMLElement | null = null;
+
+      const closeModal = () => {
+        if (modal) {
+          modal.remove();
+          modal = null;
+        }
+        if (overlay) {
+          overlay.remove();
+          overlay = null;
+        }
+        button.textContent = "Leer más";
+      };
+
+      button.addEventListener("click", (e: Event) => {
+        e.preventDefault();
+        const portfolioText: Element | null = button.closest(".portfolio-text");
+        if (!portfolioText) return;
+        const description: Element | null = portfolioText.querySelector(".description");
+        if (!description) return;
+        const descElement = description as HTMLElement;
+
+        if (!modal) {
+          // Crear overlay (fondo oscuro)
+          overlay = document.createElement("div");
+          overlay.style.position = "fixed";
+          overlay.style.top = "0";
+          overlay.style.left = "0";
+          overlay.style.width = "100%";
+          overlay.style.height = "100%";
+          overlay.style.background = "rgba(0, 0, 0, 0.8)"; // Gris oscuro semitransparente
+          overlay.style.zIndex = "999"; // Debajo del modal
+          document.body.appendChild(overlay);
+
+          // Crear modal
+          modal = descElement.cloneNode(true) as HTMLElement;
+          document.body.appendChild(modal);
+          modal.style.position = "fixed";
+          modal.style.top = "50%";
+          modal.style.left = "50%";
+          modal.style.transform = "translate(-50%, -50%)";
+          modal.style.width = "80%";
+          modal.style.maxWidth = "500px";
+          modal.style.maxHeight = "80vh";
+          modal.style.overflowY = "auto";
+          modal.style.webkitLineClamp = "";
+          modal.style.background = "white";
+          modal.style.zIndex = "1000"; // Encima del overlay
+          modal.style.padding = "2rem";
+          modal.style.borderRadius = "8px";
+          modal.style.boxShadow = "0 10px 20px rgba(0, 0, 0, 0.2)";
+          button.textContent = "Leer menos";
+
+          // Crear botón de cierre
+          const closeButton = document.createElement("button");
+          closeButton.textContent = "×";
+          closeButton.style.position = "absolute";
+          closeButton.style.top = "10px";
+          closeButton.style.right = "10px";
+          closeButton.style.fontSize = "24px";
+          closeButton.style.color = "#DD356E";
+          closeButton.style.background = "none";
+          closeButton.style.border = "none";
+          closeButton.style.cursor = "pointer";
+          closeButton.style.lineHeight = "1";
+          closeButton.addEventListener("click", closeModal);
+          modal.appendChild(closeButton);
+        } else {
+          // Cerrar modal
+          closeModal();
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .description {
+    transition: all 0.3s ease;
+  }
+  .ja75-portfolio-item {
+    max-width: 400px;
+  }
+  .portfolio-text {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+  }
+</style>

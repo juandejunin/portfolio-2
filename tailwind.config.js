@@ -15,6 +15,24 @@ module.exports = {
           '100%': { opacity: '1' },
         },
       },
+      colors: {
+        astro: {
+          primary: {
+            dark: '#181040',   // Morado oscuro (fondo principal)
+            light: '#B4A5FF',   // Morado claro (acentos)
+            orange: '#FF5D01',  // Naranja (botones y acentos)
+          },
+          secondary: {
+            dark: '#5218A1',    // Gris oscuro (texto y fondos secundarios)
+            light: '#D9D9D6',   // Gris claro (fondos y separadores)
+          },
+          accent: {
+            pink: '#FF69B4',    // Rosa (detalles y hover)
+            blue: '#00B7EB',    // Azul (detalles secundarios)
+          },
+          white: '#FFFFFF',       // Blanco (texto y fondos claros)
+        },
+      },
     },
   },
   plugins: [

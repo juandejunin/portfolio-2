@@ -2,10 +2,26 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
+// Props para configurar el componente
+interface Props {
+  title: string;
+  titleTag?: 'h1' | 'h2';
+  introText: string;
+  introTextColor?: string;
+  limit?: number; // Para limitar el número de posts (opcional)
+  id?: string; // ID opcional para la sección
+}
+
+const { title, titleTag = 'h2', introText, introTextColor = 'text-white', limit, id } = Astro.props;
+
+// Obtener y ordenar los posts
 const posts = await getCollection('blog');
-const recentPosts = posts
-  .sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
+const sortedPosts = posts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => 
+  b.data.date.getTime() - a.data.date.getTime()
+);
+
+// Aplicar el límite si existe
+const displayPosts = limit ? sortedPosts.slice(0, limit) : sortedPosts;
 
 function getSummary(description: string): string {
   return description.length > 100 
@@ -14,18 +30,24 @@ function getSummary(description: string): string {
 }
 ---
 
-<div id="ja75-blog" class="py-28">
+<div {id} class="py-28">
   <div class="container max-w-7xl mx-auto px-4">
     <div class="text-center mb-20 animate-fade-in">
-      <h2 class="text-[40px] font-inconsolata font-normal text-black leading-tight">
-        Últimos posts
-      </h2>
-      <p class="text-lg text-gray-500">
-        Reflexiones sobre sonido, código y sistemas.
+      {titleTag === 'h1' ? (
+        <h1 class="text-[40px] font-inconsolata font-normal text-white leading-tight">
+          {title}
+        </h1>
+      ) : (
+        <h2 class="text-[40px] font-inconsolata font-normal text-white leading-tight">
+          {title}
+        </h2>
+      )}
+      <p class={`text-lg ${introTextColor}`}>
+        {introText}
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-      {recentPosts.map((post: CollectionEntry<'blog'>) => (
+      {displayPosts.map((post: CollectionEntry<'blog'>) => (
         <div class="ja75-blog-post animate-fade-in">
           <a
             href={`/blog/${post.slug}`}
@@ -33,7 +55,7 @@ function getSummary(description: string): string {
             style="background-image: url('/images/blog-placeholder.jpg');"
           ></a>
           <div class="p-8 bg-white shadow-md rounded-b-lg">
-            <span class="text-sm text-gray-400 mb-5 block">
+            <span class="text-sm text-white mb-5 block">
               {post.data.date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
             </span>
             <h3 class="text-2xl font-inconsolata font-normal mb-5">
