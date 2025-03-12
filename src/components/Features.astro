@@ -1,29 +1,59 @@
 ---
 const features = [
-  { title: "Marketing", description: "Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.", icon: "mdi:airballoon" },
-  { title: "Search Engine", description: "Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.", icon: "mdi:magnify" },
-  { title: "Earn Money", description: "Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.", icon: "mdi:wallet" },
-  { title: "Entrepreneur", description: "Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.", icon: "mdi:glass-wine" },
-  { title: "Strategic Plan", description: "Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.", icon: "mdi:lightbulb-on" },
-  { title: "Support", description: "Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.", icon: "mdi:chat" },
+  {
+    title: "Exploración sonora",
+    description:
+      "Llevo 30 años investigando el sonido como arte, herramienta y comunicación, desafiando sus límites con un enfoque experimental.",
+   icon: "/icons/waveform.svg",
+  },
+  {
+    title: "Desarrollo dinámico",
+    description:
+      "Con 5 años creando software innovador, fusiono código y creatividad, respaldado por una vida de curiosidad tecnológica.",
+    icon: "/icons/code-braces.svg",
+  },
+  {
+    title: "Visión sistémica",
+    description:
+      "25 años explorando tecnología me han enseñado a ver los problemas como partes de un todo, encontrando soluciones más allá de lo evidente.",
+    icon: "/icons/eye-circle.svg",
+  },
+  {
+    title: "Pensamiento disruptivo",
+    description:
+      "Mis reflexiones, como el ensayo sobre prácticas sonoras, buscan redefinir cómo entendemos el sonido y la tecnología.",
+    icon: "/icons/book-open-variant.svg",
+  },
+  {
+    title: "Proyectos híbridos",
+    description:
+      "Combino desarrollo y sonido en creaciones únicas que exploran la intersección entre lo digital y lo sonoro.",
+    icon: "/icons/puzzle.svg",
+  },
+  {
+    title: "Conexión creativa",
+    description:
+      "Mis soluciones y exploraciones buscan resonar con las personas, uniendo funcionalidad con experiencias humanas.",
+    icon: "/icons/heart-pulse.svg",
+  },
 ];
 ---
 
-<div id="ja75-features" class="bg-[#FEE856] py-28">
+<div id="ja75-features" class=" py-28">
   <div class="container max-w-7xl mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
       {features.map((feature) => (
         <div class="flex items-start space-x-4 animate-fade-in">
           <span class="flex items-center justify-center w-16 h-16 bg-white rounded-full">
-            <span class={`icon-[${feature.icon}] text-3xl text-[#DD356E]`}></span>
+            <img src={feature.icon} alt={feature.title} class="w-8 h-8 text-[#DD356E]" />
           </span>
           <div class="flex-1">
             <h3 class="text-2xl font-inconsolata font-normal mb-2">{feature.title}</h3>
-            <p class="text-[15px] text-black mb-0">{feature.description}</p>
+            <p class="text-[15px] text-white mb-2">{feature.description}</p>
             <p>
-              <a href="#" class="text-black hover:text-[#DD356E] transition duration-300 flex items-center space-x-1">
-                <span>Learn More</span>
-                <span class="icon-[mdi:arrow-right] text-xl"></span>
+              <a href="#" class="text-white hover:text-[#DD356E] transition duration-300 flex items-center space-x-1">
+                <span>Descubre más</span>
+                <img src="/icons/arrow-right.svg" alt="Arrow right" class="w-5 h-5" />
               </a>
             </p>
           </div>
@@ -32,3 +62,13 @@ const features = [
     </div>
   </div>
 </div>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+</style>

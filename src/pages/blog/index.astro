@@ -1,0 +1,15 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import BlogPosts from "../../components/BlogPosts.astro"; // Asegúrate de ajustar la ruta
+import CTA from "../../components/CTA.astro";
+---
+
+<MainLayout title="Blog">
+  <BlogPosts
+    title="Blog"
+    titleTag="h1"
+    introText="Reflexiones sobre sonido, código y sistemas."
+    introTextColor="text-gray-500"
+  />
+  <CTA />
+</MainLayout>

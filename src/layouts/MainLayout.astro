@@ -1,21 +1,26 @@
 ---
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
-
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JA75 — web dev</title>
-    <meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
-    <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-    <meta name="author" content="freehtml5.co" />
-    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" />
+    <meta name="description" content="web site juan amieva" />
+    <meta
+      name="keywords"
+      content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"
+    />
+    <meta name="author" content="ja75" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="page">
@@ -26,5 +31,22 @@ import '../styles/global.css';
     <div class="gototop js-top">
       <a href="#" class="js-gotop"><span class="icon-[mdi:arrow-up]"></span></a>
     </div>
+    <script>
+      function highlightActiveLink() {
+        const currentPath = window.location.pathname; // Obtiene la ruta de la URL actual
+        const links = document.querySelectorAll(".nav-link"); // Selecciona todos los enlaces con clase 'nav-link'
+
+        links.forEach((link) => {
+          // Compara la URL del enlace con la URL actual
+          if (link.getAttribute("href") === currentPath) {
+            link.classList.add("text-astro-primary-orange"); // Añadir la clase activa
+          } else {
+            link.classList.remove("text-astro-primary-orange"); // Eliminar la clase si no coincide
+          }
+        });
+      }
+      // Ejecutar al cargar la página
+      document.addEventListener("DOMContentLoaded", highlightActiveLink);
+    </script>
   </body>
 </html>

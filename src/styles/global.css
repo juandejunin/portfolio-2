@@ -1,33 +1,44 @@
 body {
-    background: #fff;
-    color: #000000;
-    /* font-size: 14px; Base del original */
-    font-family: 'Inconsolata', Arial, sans-serif;
-  }
-  
-  #page {
-    position: relative;
-    overflow-x: hidden;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .gototop {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.5s;
-  }
-  
-  .gototop.active {
-    opacity: 1;
-    visibility: visible;
-  }
 
-  .swiper-button-next,
+  /* background: linear-gradient(to right, #430280, #8329eb, #200149); */
+
+  background:
+    linear-gradient(to right, #181040, #5234da, #2e00d4),
+    /* Gradiente horizontal */
+    linear-gradient(to bottom, #fff, #000);
+  /* Gradiente vertical */
+  background-blend-mode: multiply;
+
+
+
+  color: #fff;
+  /* font-size: 14px; Base del original */
+  font-family: 'Inconsolata', Arial, sans-serif;
+}
+
+#page {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.gototop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+
+.gototop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.swiper-button-next,
 .swiper-button-prev {
   color: #fff;
 }
@@ -38,4 +49,16 @@ body {
 
 .swiper-pagination-bullet-active {
   background: #fff;
+}
+
+svg {
+  fill: currentColor;
+  /* Permite que el color se herede de text-[#DD356E] */
+}
+
+.collapsed {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }

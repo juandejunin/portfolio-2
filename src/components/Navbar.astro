@@ -2,12 +2,12 @@
 
 ---
 
-<nav
-  class="ja75-nav fixed w-full bg-white text-black z-50 flex items-center justify-between p-6"
->
 
+<nav class="ja75-nav fixed w-full bg-gradient-to-r from-[#0a0716] via-[#482dbd] to-[#3b259e] text-astro-white z-50 flex items-center justify-between p-6">
   <!-- Logo -->
-  <div class="text-4xl font-bold font-inconsolata"><a href="index.html">JA75<span class="text-red-600">.</span></a></div>
+  <div class="text-4xl font-bold font-inconsolata">
+    <a href="index.html">JA75<span class="text-astro-primary-orange">.</span></a>
+  </div>
 
   <!-- Ícono de hamburguesa personalizado -->
   <button
@@ -25,33 +25,35 @@
   <!-- Overlay con transición -->
   <div
     id="overlay"
-    class="fixed inset-0 bg-gray-900 bg-opacity-50 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out z-40"
-  >
-  </div>
+    class="fixed inset-0 bg-astro-secondary-dark bg-opacity-50 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out z-40"
+  ></div>
 
   <!-- Menú lateral -->
   <div
     id="mobile-menu"
-    class="fixed inset-y-0 right-0 w-0 pt-14 bg-white text-black transition-all duration-300 ease-in-out overflow-hidden md:hidden z-50"
+    class="fixed inset-y-0 right-0 w-0 pt-14 bg-astro-primary-dark text-astro-white transition-all duration-300 ease-in-out overflow-hidden md:hidden z-50"
   >
     <div class="p-4 flex flex-col h-full">
       <ul class="space-y-4 mt-4 flex-grow">
-        <li><a href="#" class="block hover:text-gray-300">Inicio</a></li>
-        <li><a href="#" class="block hover:text-gray-300">Acerca</a></li>
-        <li><a href="#" class="block hover:text-gray-300">Servicios</a></li>
-        <li><a href="#" class="block hover:text-gray-300">Contacto</a></li>
+        <li><a href="/" class="nav-link block hover:text-astro-secondary-light">Inicio</a></li>
+        <li><a href="/about/" class="nav-link block hover:text-astro-secondary-light">Acerca</a></li>
+        <!-- <li><a href="/blog/" class="nav-link hover:text-astro-secondary-light">Blog</a></li> -->
+        <li><a href="/portfolioPage/" class="nav-link block hover:text-astro-secondary-light">Portfolio</a></li>
+        <li><a href="/contacto/" class="nav-link block hover:text-astro-secondary-light">Contacto</a></li>
       </ul>
     </div>
   </div>
 
   <!-- Menú desktop -->
   <ul class="hidden md:flex space-x-6 text-2xl">
-    <li><a href="#" class="hover:text-gray-300">Inicio</a></li>
-    <li><a href="#" class="hover:text-gray-300">Acerca</a></li>
-    <li><a href="#" class="hover:text-gray-300">Servicios</a></li>
-    <li><a href="#" class="hover:text-gray-300">Contacto</a></li>
+    <li><a href="/" class="nav-link hover:text-astro-secondary-light">Inicio</a></li>
+    <li><a href="/about/" class="nav-link hover:text-astro-secondary-light">Acerca</a></li>
+    <!-- <li><a href="/blog/" class="nav-link hover:text-astro-secondary-light">Blog</a></li> -->
+    <li><a href="/portfolioPage/" class="nav-link hover:text-astro-secondary-light">Portfolio</a></li>
+    <li><a href="/contacto/" class="nav-link hover:text-astro-secondary-light">Contacto</a></li>
   </ul>
 </nav>
+
 
 <script>
   const menuToggle = document.getElementById("ja75-nav-toggle");
@@ -84,7 +86,7 @@
 
   /* Estilos para las líneas del ícono de hamburguesa */
   #ja75-nav-toggle .hamburger-icon .line {
-    background-color: #000;
+    background-color: #fff; /* Usamos blanco directo ya que Tailwind no aplica aquí */
     height: 3px;
     margin: 4px 0;
     transition:

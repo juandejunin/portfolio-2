@@ -1,0 +1,84 @@
+---
+const skills = [
+  {
+    title: "Exploración sonora",
+    description:
+      "30 años creando y experimentando con sonido, desde instalaciones artísticas hasta grabaciones de campo.",
+    icon: "/icons/waveform.svg",
+  },
+  {
+    title: "Desarrollo de software",
+    description:
+      "5 años diseñando soluciones digitales, desde aplicaciones web hasta herramientas de audio en tiempo real.",
+    icon: "/icons/code-braces.svg",
+  },
+  {
+    title: "Pensamiento sistémico",
+    description:
+      "25 años aplicando un enfoque holístico para resolver problemas complejos en arte y tecnología.",
+    icon: "/icons/eye-circle.svg",
+  },
+];
+---
+
+<section id="ja75-about" class="py-28 font-inconsolata">
+  <div class="container max-w-7xl mx-auto px-4">
+    <!-- Sección principal -->
+    <div class="text-center mb-20 animate-fade-in">
+      <h2 class="text-[40px] font-normal mb-5">Acerca de mí</h2>
+      <p class="text-lg">
+        Mi pasión es construir puentes entre las manifestaciones sonoras y la
+        tecnología.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <!-- Historia -->
+      <div class="animate-fade-in">
+        <h3 class="text-2xl font-normal mb-5">Mi historia</h3>
+        <p class="text-lg">
+          Reconozco que describirme a mí mismo puede ser un desafío; a veces es
+          difícil conocernos profundamente. Creo que el momento más esencial de
+          nuestra vida es la infancia, cuando somos más auténticos. Al recordar,
+          veo que mis juegos giraban en torno a tres temas: inventos, música y
+          deportes. Ahora entiendo que esas experiencias moldearon mi camino.
+          Fui deportista hasta los 20 años, luego me sumergí en la música y, con
+          el tiempo, la investigación tecnológica ganó relevancia. Durante más
+          de tres décadas, he explorado el mundo del sonido, desde cantos
+          rituales hasta ritmos cotidianos, y hace cinco años fusioné esta
+          pasión con el desarrollo de software, creando herramientas que
+          conectan lo analógico con lo digital.
+        </p>
+      </div>
+
+      <!-- Imagen -->
+      <div class="animate-fade-in">
+        <img
+          src="/images/about/antartida-2.jpg"
+          alt="Juan Amieva explorando sonido y tecnología"
+          class="w-full h-auto rounded-lg shadow-md"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+
+
+  @keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+  will-change: opacity, transform;
+}
+
+</style>

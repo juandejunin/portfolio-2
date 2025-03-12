@@ -1,0 +1,18 @@
+---
+interface Props {
+  pdf: string;
+  text?: string;
+}
+const { pdf, text = "Descargar PDF" } = Astro.props;
+---
+
+{pdf && (
+  <a
+    href={pdf}
+    download
+    class="text-[#DD356E] hover:text-[#e14b7e] transition duration-300 flex items-center space-x-1 mt-2"
+  >
+    <span>{text}</span>
+    <img src="/icons/download.svg" alt="Download" class="w-5 h-5" />
+  </a>
+)}
