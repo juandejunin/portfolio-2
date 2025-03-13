@@ -6,6 +6,7 @@ import "../styles/global.css";
 
 <!doctype html>
 <html lang="en">
+  <!-- Código modificado en el archivo HTML -->
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,11 +18,24 @@ import "../styles/global.css";
       content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"
     />
     <meta name="author" content="ja75" />
+    <!-- Preconnect para Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Precarga optimizada de Inconsolata -->
     <link
-      href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"
-      rel="stylesheet"
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap"
+      as="style"
+      onload="this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
   </head>
+
   <body>
     <div id="page">
       <Navbar />
@@ -33,19 +47,17 @@ import "../styles/global.css";
     </div>
     <script>
       function highlightActiveLink() {
-        const currentPath = window.location.pathname; // Obtiene la ruta de la URL actual
-        const links = document.querySelectorAll(".nav-link"); // Selecciona todos los enlaces con clase 'nav-link'
+        const currentPath = window.location.pathname;
+        const links = document.querySelectorAll(".nav-link");
 
         links.forEach((link) => {
-          // Compara la URL del enlace con la URL actual
           if (link.getAttribute("href") === currentPath) {
-            link.classList.add("text-astro-primary-orange"); // Añadir la clase activa
+            link.classList.add("text-astro-primary-orange");
           } else {
-            link.classList.remove("text-astro-primary-orange"); // Eliminar la clase si no coincide
+            link.classList.remove("text-astro-primary-orange");
           }
         });
       }
-      // Ejecutar al cargar la página
       document.addEventListener("DOMContentLoaded", highlightActiveLink);
     </script>
   </body>
