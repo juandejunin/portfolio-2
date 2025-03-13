@@ -10,7 +10,6 @@ interface Project {
 }
 
 const projects: Project[] = [
-
   {
     title: "Repositorio Git: Captura de Leads",
     image: "/images/portfolio/swagger-back.png",
@@ -37,21 +36,21 @@ const projects: Project[] = [
     image: "/images/portfolio/raul-lavie.png",
     description:
       "En 2017, participé como tubista en la grabación del CD Sonidos de la Patria de la Banda Militar Conjunta Argentina, integrada por músicos del Ejército, la Armada y la Fuerza Aérea. Como parte de este proyecto, Raúl Lavié fue invitado a interpretar 'Caminito' junto a la banda. La grabación se llevó a cabo en los estudios de Fort Music, en Buenos Aires, con un enfoque profesional en la captación y mezcla del sonido para reflejar con fidelidad la interpretación del artista y la ejecución instrumental.",
-    link: "https://github.com/juandejunin/service-funnel.git",
+    link: "https://soundcloud.com/user-862521320/6-adios-nonino?in=user-862521320/sets/sonidos-de-la-patria-banda-conjunta-militar&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
   },
   {
     title: "Antartida",
     image: "/images/portfolio/antartida.png",
     description:
       "En 2016, formé parte de la Banda Militar Conjunta Argentina en una misión histórica: brindar un concierto en la Antártida. Junto a 43 músicos del Ejército, la Armada y la Fuerza Aérea, viajamos al continente blanco para participar en el Concierto por la Paz, un evento concebido para enviar un mensaje de unión, paz y conciencia ambiental. Interpretamos un repertorio variado, que incluyó Adiós Nonino de Astor Piazzolla. La presentación se llevó a cabo en condiciones extremas, lo que representó un desafío tanto logístico como musical, destacando el compromiso y la precisión técnica de la banda en un entorno único.",
-    link: "https://github.com/juandejunin/service-funnel.git",
+    link: "https://youtu.be/hYDRRrBmSzE?si=urJrRLLYxUunB3N6",
   },
   {
     title: "Mas alla del arte",
-    image: "/images/portfolio/antartida.png",
+    image: "/images/portfolio/sound.webp",
     description:
       "Ensayo sobre el error de englobar todas las prácticas sonoras dentro de la música.",
-    link: "https://github.com/juandejunin/service-funnel.git",
+    pdf: "../public/pdfs/mas_alla_del_arte.pdf",
   },
 ];
 ---
@@ -80,7 +79,7 @@ const projects: Project[] = [
             />
           </div>
           <div class="portfolio-text p-6 bg-white shadow-md rounded-b-lg flex flex-col flex-1">
-            <h3 class="text-2xl font-inconsolata font-normal text-black mb-3 line-clamp-2">
+            <h3 class="text-2xl font-inconsolata font-normal text-black mb-3 line-clamp-2 title">
               {project.title}
             </h3>
             <p
@@ -89,14 +88,14 @@ const projects: Project[] = [
             >
               {project.description}
             </p>
-            <div class="flex justify-between items-center mt-4 pt-4 border-t border-black/10">
-              <button class="toggle-text text-sm text-black/50 hover:text-[#DD356E] transition-colors">
+            <div class="flex justify-between items-center mt-2 pt-4 border-t border-black/10">
+              <button class="toggle-text text-sm text-black hover:text-[#DD356E] transition-colors">
                 Leer más
               </button>
               {project.link && (
                 <a
                   href={project.link}
-                  class="text-sm text-black/50 hover:text-[#DD356E] transition-colors"
+                  class="text-sm text-black hover:text-[#DD356E] transition-colors"
                 >
                   Ver más
                 </a>
@@ -105,7 +104,7 @@ const projects: Project[] = [
                 <a
                   href={project.pdf}
                   download
-                  class="text-[#DD356E] hover:text-[#e14b7e] transition-colors flex items-center space-x-1"
+                  class="text-[#000000] hover:text-[#e14b7e] transition-colors flex items-center space-x-1"
                 >
                   <span>Descargar PDF</span>
                   <img
@@ -132,14 +131,17 @@ const projects: Project[] = [
 
       const closeModal = () => {
         if (modal) {
-          modal.remove();
-          modal = null;
+          modal.classList.remove("modal-open");
+          setTimeout(() => {
+            modal?.remove();
+            modal = null;
+            if (overlay) {
+              overlay.remove();
+              overlay = null;
+            }
+            button.textContent = "Leer más";
+          }, 300);
         }
-        if (overlay) {
-          overlay.remove();
-          overlay = null;
-        }
-        button.textContent = "Leer más";
       };
 
       button.addEventListener("click", (e: Event) => {
@@ -151,19 +153,21 @@ const projects: Project[] = [
         const descElement = description as HTMLElement;
 
         if (!modal) {
-          // Crear overlay (fondo oscuro)
           overlay = document.createElement("div");
+          overlay.className = "modal-overlay";
           overlay.style.position = "fixed";
           overlay.style.top = "0";
           overlay.style.left = "0";
           overlay.style.width = "100%";
           overlay.style.height = "100%";
-          overlay.style.background = "rgba(0, 0, 0, 0.8)"; // Gris oscuro semitransparente
-          overlay.style.zIndex = "999"; // Debajo del modal
+          overlay.style.background = "rgba(0, 0, 0, 0.8)";
+          overlay.style.zIndex = "999";
+          overlay.style.opacity = "0";
           document.body.appendChild(overlay);
 
-          // Crear modal
-          modal = descElement.cloneNode(true) as HTMLElement;
+          modal = document.createElement("div");
+          modal.className = "modal-content";
+          modal.textContent = descElement.textContent || "";
           document.body.appendChild(modal);
           modal.style.position = "fixed";
           modal.style.top = "50%";
@@ -173,15 +177,13 @@ const projects: Project[] = [
           modal.style.maxWidth = "500px";
           modal.style.maxHeight = "80vh";
           modal.style.overflowY = "auto";
-          modal.style.webkitLineClamp = "";
           modal.style.background = "white";
-          modal.style.zIndex = "1000"; // Encima del overlay
+          modal.style.zIndex = "1000";
           modal.style.padding = "2rem";
           modal.style.borderRadius = "8px";
           modal.style.boxShadow = "0 10px 20px rgba(0, 0, 0, 0.2)";
-          button.textContent = "Leer menos";
+          modal.style.color = "#333";
 
-          // Crear botón de cierre
           const closeButton = document.createElement("button");
           closeButton.textContent = "×";
           closeButton.style.position = "absolute";
@@ -195,8 +197,13 @@ const projects: Project[] = [
           closeButton.style.lineHeight = "1";
           closeButton.addEventListener("click", closeModal);
           modal.appendChild(closeButton);
+
+          requestAnimationFrame(() => {
+            overlay!.style.opacity = "1";
+            modal!.classList.add("modal-open");
+            button.textContent = "Leer menos";
+          });
         } else {
-          // Cerrar modal
           closeModal();
         }
       });
@@ -206,7 +213,7 @@ const projects: Project[] = [
 
 <style>
   .description {
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
   }
   .ja75-portfolio-item {
     max-width: 400px;
@@ -215,5 +222,32 @@ const projects: Project[] = [
     min-height: 200px;
     display: flex;
     flex-direction: column;
+  }
+  .title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: auto; /* Permitir que el título crezca según el contenido */
+    min-height: 3rem; /* Asegurar espacio para dos líneas */
+    line-height: 1.5rem; /* Altura de línea consistente */
+    margin-bottom: 0.75rem; /* Espacio fijo debajo del título */
+  }
+  .modal-overlay {
+    transition: opacity 0.1s ease;
+  }
+  .modal-content {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    /* transition-delay: 0.05s; */
+    color: #202020;
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+  .modal-content.modal-open {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
 </style>
