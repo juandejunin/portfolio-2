@@ -1,6 +1,9 @@
 ---
 import { Image } from "astro:assets";
 
+import DownloadAstro from '../components/icons/download.astro'
+
+
 interface Project {
   title: string;
   image: string;
@@ -55,7 +58,7 @@ const projects: Project[] = [
 ];
 ---
 
-<section id="ja75-portfolio" class="py-28">
+<section id="j75-portfolio" class="py-28">
   <div class="container max-w-7xl mx-auto px-4">
     <div class="text-center mb-20 animate-fade-in">
       <h2 class="text-[40px] font-inconsolata font-normal mb-5">
@@ -66,9 +69,10 @@ const projects: Project[] = [
         cada pieza encaje como debe.
       </p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 auto-rows-auto">
+    <div class="j75-portfolio-grid grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-10 auto-rows-auto">
+
       {projects.map((project) => (
-        <div class="ja75-portfolio-item animate-fade-in flex flex-col h-[500px]">
+        <div class="j75-portfolio-item border-2 border-white/10  rounded-lg animate-fade-in flex flex-col h-[500px]">
           <div class="portfolio-entry rounded-t-lg overflow-hidden aspect-[4/3]">
             <Image
               src={project.image}
@@ -78,24 +82,24 @@ const projects: Project[] = [
               class="w-full h-full object-cover"
             />
           </div>
-          <div class="portfolio-text p-6 bg-white shadow-md rounded-b-lg flex flex-col flex-1">
-            <h3 class="text-2xl font-inconsolata font-normal text-black mb-3 line-clamp-2 title">
+          <div class="portfolio-text p-6  shadow-md rounded-b-lg flex flex-col flex-1">
+            <h3 class="text-2xl font-inconsolata font-normal text-white mb-3 line-clamp-2 title">
               {project.title}
             </h3>
             <p
-              class="text-lg text-black/70 description overflow-hidden"
+              class="text-lg text-gray-200 description overflow-hidden"
               style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;"
             >
               {project.description}
             </p>
             <div class="flex justify-between items-center mt-2 pt-4 border-t border-black/10">
-              <button class="toggle-text text-sm text-black hover:text-[#DD356E] transition-colors">
+              <button class="toggle-text text-sm text-white hover:text-[#DD356E] transition-colors">
                 Leer más
               </button>
               {project.link && (
                 <a
                   href={project.link}
-                  class="text-sm text-black hover:text-[#DD356E] transition-colors"
+                  class="text-sm text-white hover:text-[#DD356E] transition-colors"
                 >
                   Ver más
                 </a>
@@ -104,14 +108,11 @@ const projects: Project[] = [
                 <a
                   href={project.pdf}
                   download
-                  class="text-[#000000] hover:text-[#e14b7e] transition-colors flex items-center space-x-1"
+                  class="text-white hover:text-[#e14b7e] transition-colors flex items-center space-x-1"
                 >
-                  <span>Descargar PDF</span>
-                  <img
-                    src="/icons/download.svg"
-                    alt="Download"
-                    class="w-5 h-5"
-                  />
+                  <span>PDF</span>
+                  
+                  <DownloadAstro class="w-5 h-5" />
                 </a>
               )}
             </div>
@@ -212,28 +213,72 @@ const projects: Project[] = [
 </script>
 
 <style>
-  .description {
-    transition: all 0.2s ease;
-  }
-  .ja75-portfolio-item {
-    max-width: 400px;
-  }
-  .portfolio-text {
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-  }
-  .title {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: auto; /* Permitir que el título crezca según el contenido */
-    min-height: 3rem; /* Asegurar espacio para dos líneas */
-    line-height: 1.5rem; /* Altura de línea consistente */
-    margin-bottom: 0.75rem; /* Espacio fijo debajo del título */
-  }
+
+  
+/* Ajustar el tamaño de las tarjetas */
+.j75-portfolio-item {
+  width: 100%; /* Usar todo el ancho disponible */
+  max-width: 400px; /* Límite máximo */
+  height: auto; /* Permitir que la altura se ajuste */
+  max-height: 500px; /* Límite máximo de altura */
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 4 / 5; /* Mantener proporciones */
+ 
+}
+
+.portfolio-entry {
+  /* Imagen */
+  width: 100%;
+  aspect-ratio: 4 / 3; /* Mantener proporciones de la imagen */
+  overflow: hidden;
+  flex-shrink: 0; /* Evitar que la imagen se reduzca */
+}
+
+.portfolio-text {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0; /* Cambiar de flex: 1 a flex-grow: 0 para evitar expansión innecesaria */
+  gap: 1rem; /* Espaciado consistente entre elementos */
+  padding: 1.5rem;
+  
+ 
+ 
+}
+
+.title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: auto;
+  min-height: 3rem; /* Asegurar espacio para dos líneas */
+  line-height: 1.5rem;
+  margin-bottom: 0; /* Eliminar margen extra */
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5rem;
+  height: 3rem; /* Altura fija para 2 líneas */
+  transition: all 0.2s ease;
+}
+
+/* Botones */
+.portfolio-text > div:last-child {
+  margin-top: auto; /* Empujar los botones al final del contenedor */
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2.5rem;
+}
   .modal-overlay {
     transition: opacity 0.1s ease;
   }

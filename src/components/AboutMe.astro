@@ -21,64 +21,50 @@ const skills = [
 ];
 ---
 
-<section id="ja75-about" class="py-2 font-inconsolata">
+<section id="j75-about" class="py-2 font-inconsolata">
   <div class="container max-w-7xl mx-auto px-4">
     <!-- Sección principal -->
     <div class="text-center mb-20 animate-fade-in">
       <h2 class="text-[40px] font-normal mb-5">Acerca de mí</h2>
-      <p class="text-lg">
+      <p class="text-lg max-w-2xl mx-auto">
         Mi pasión es construir puentes entre las manifestaciones sonoras y la
         tecnología.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-      <!-- Historia -->
-      <div class="animate-fade-in">
-        <h3 class="text-2xl font-normal mb-5">Mi historia</h3>
-        <p class="text-lg">
-          Reconozco que describirme a mí mismo puede ser un desafío; a veces es
-          difícil conocernos profundamente. Creo que el momento más esencial de
-          nuestra vida es la infancia, cuando somos más auténticos. Al recordar,
-          veo que mis juegos giraban en torno a tres temas: inventos, música y
-          deportes. Ahora entiendo que esas experiencias moldearon mi camino.
-          Fui deportista hasta los 20 años, luego me sumergí en la música y, con
-          el tiempo, la investigación tecnológica ganó relevancia. Durante más
-          de tres décadas, he explorado el mundo del sonido, desde cantos
-          rituales hasta ritmos cotidianos, y hace cinco años fusioné esta
-          pasión con el desarrollo de software, creando herramientas que
-          conectan lo analógico con lo digital.
-        </p>
-      </div>
-
-      <!-- Imagen -->
-      <div class="animate-fade-in">
-        <img
-          src="/images/about/antartida-2.webp"
-          alt="Juan Amieva explorando sonido y tecnología"
-          class="w-full h-auto rounded-lg shadow-md"
-        />
-      </div>
+    <!-- Historia -->
+    <div class="text-center animate-fade-in max-w-3xl mx-auto">
+      <h3 class="text-2xl font-normal mb-5">Mi historia</h3>
+      <p class="text-lg">
+        Reconozco que describirme a mí mismo puede ser un desafío; a veces es
+        difícil conocernos profundamente. Creo que el momento más esencial de
+        nuestra vida es la infancia, cuando somos más auténticos. Al recordar,
+        veo que mis juegos giraban en torno a tres temas: inventos, música y
+        deportes. Ahora entiendo que esas experiencias moldearon mi camino.
+        Fui deportista hasta los 20 años, luego me sumergí en la música y, con
+        el tiempo, la investigación tecnológica ganó relevancia. Durante más
+        de tres décadas, he explorado el mundo del sonido, desde cantos
+        rituales hasta ritmos cotidianos, y hace cinco años fusioné esta
+        pasión con el desarrollo de software, creando herramientas que
+        conectan lo analógico con lo digital.
+      </p>
     </div>
   </div>
 </section>
 
 <style>
-
-
   @keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+    will-change: opacity, transform;
   }
-}
-.animate-fade-in {
-  animation: fade-in 0.8s ease-out forwards;
-  will-change: opacity, transform;
-}
-
 </style>

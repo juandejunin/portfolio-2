@@ -1,13 +1,13 @@
 ---
-
+const pdfPath = "/pdfs/cv-juan-amieva.pdf"; // Ruta estática desde public/
 ---
 
 <header
-  id="ja75-header"
-  class="ja75-cover bg-top bg-no-repeat min-h-screen flex items-center relative"
+  id="j75-header"
+  class="j75-cover bg-top bg-no-repeat min-h-screen flex items-center relative"
 >
   <!-- Overlay oscuro para contraste -->
-  <div class="absolute inset-0"></div>
+  <!-- <div class="absolute inset-0 bg-black opacity-50"></div> -->
 
   <!-- Contenedor principal -->
   <div class="container max-w-7xl mx-auto px-4 relative z-10">
@@ -19,36 +19,31 @@
             <h1
               class="text-4xl md:text-[54px] font-inconsolata font-light text-white leading-tight mb-5"
             >
-              ¡Hola! Soy Juan Amieva
+              ¡Hola! Soy J75.
             </h1>
 
             <!-- Subtítulo con tu descripción -->
             <h2
               class="text-xl md:text-2xl font-inconsolata text-white leading-relaxed mb-8"
             >
-              Desarrollador de software y explorador sonoro
+              Desarrollador de software y explorador sonoro.
             </h2>
 
             <!-- Breve descripción adicional -->
             <p class="text-lg font-inconsolata text-white mb-20">
-              Creo soluciones digitales y exploro el mundo del sonido.
+              Transformo ideas en código y sonido, explorando nuevas formas de
+              conexión.
             </p>
 
-            <!-- Botones personalizados -->
-            <p class="space-x-4">
-              <a
-                href="#projects"
-                class="btn bg-astro-accent-pink text-astro-primary-dark text-lg font-inconsolata py-4 px-8 rounded-full hover:bg-[#e14b7e] hover:shadow-lg transition duration-500"
-              >
-                Dev
-              </a>
-              <a
-                href="#music"
-                class="btn bg-astro-primary-orange text-black text-lg font-inconsolata py-4 px-8 rounded-full hover:bg-[#fee336] hover:shadow-lg transition duration-500"
-              >
-                Sound
-              </a>
-            </p>
+            <!-- Botón de descarga del CV -->
+            <a
+            href={pdfPath}
+            download="CV_Juan_Amieva.pdf"
+            class="btn bg-astro-accent-pink text-astro-primary-dark text-lg font-inconsolata py-4 px-12 rounded-full hover:bg-[#e14b7e] hover:shadow-lg transition duration-500 inline-flex items-center space-x-1"
+          >
+            <span>Descargar CV</span>
+            <img src="/icons/download.svg" alt="Download" class="w-4 h-4" />
+          </a>
           </div>
         </div>
       </div>
