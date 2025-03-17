@@ -6,7 +6,7 @@ import GithubIcon from '../components/icons/GitHub.astro'
 
 const links = [
   { text: "Inicio", href: "/" },
-  { text: "Blog", href: "/blog/" },
+  
   { text: "Contacto", href: "/contacto" },
 ];
 
@@ -18,9 +18,9 @@ const categories = [
 
 const contactInfo = [
   "Badajoz, España",
-  "+0303456", // Reemplaza con tu número real si lo deseas
-  "juan@amieva.com",    // Reemplaza con tu email real
-  "juanamieva.com",     // Reemplaza con tu dominio real si tienes uno
+  
+  "info@JA75.es",    // Reemplaza con tu email real
+  
 ];
 
 const socialLinks = [
@@ -30,85 +30,20 @@ const socialLinks = [
 ];
 ---
 
-<!-- <footer id="ja75-footer" class="py-28 text-white">
-  <div class="container max-w-7xl mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-      <div class="ja75-widget">
-        <h4 class="text-xl font-inconsolata font-normal mb-8">Juan Amieva</h4>
-        <p class="text-lg">
-          Explorador sonoro con 30 años de experiencia y desarrollador de software desde hace 5 años. Creo puentes entre sonido y tecnología.
-        </p>
-      </div>
-      <div class="ja75-widget md:order-2">
-        <h4 class="text-xl font-inconsolata font-normal mb-8">Enlaces</h4>
-        <ul class="space-y-2">
-          {links.map((link) => (
-            <li>
-              <a href={link.href} class="text-white hover:text-[#FEE856] transition duration-300">
-                {link.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div class="ja75-widget md:order-3">
-        <h4 class="text-xl font-inconsolata font-normal mb-8">Categorías</h4>
-        <ul class="space-y-2">
-          {categories.map((category) => (
-            <li>
-              <a href={category.href} class="text-white hover:text-[#FEE856] transition duration-300">
-                {category.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div class="ja75-widget md:order-1">
-        <h4 class="text-xl font-inconsolata font-normal mb-8">Contacto</h4>
-        <ul class="space-y-2">
-          <li class="text-lg">{contactInfo[0]}</li>
-          <li><a href={`tel:${contactInfo[1]}`} class="text-white/70 hover:text-[#FEE856] transition duration-300">{contactInfo[1]}</a></li>
-          <li><a href={`mailto:${contactInfo[2]}`} class="text-white/70 hover:text-[#FEE856] transition duration-300">{contactInfo[2]}</a></li>
-          <li><a href={`https://${contactInfo[3]}`} class="text-white/70 hover:text-[#FEE856] transition duration-300">{contactInfo[3]}</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="text-center">
-      <p class="text-sm">
-        <small class="block">© 2025 Juan Amieva. Todos los derechos reservados.</small>
-        <small class="block">
-          Creado por Juan Amieva con <a href="https://astro.build" target="_blank" class="text-[#FEE856] hover:text-white transition duration-300">Astro</a>
-        </small>
-      </p>
-      <ul class="flex justify-center space-x-4 mt-4">
-        {socialLinks.map(({ href, component: Icon }) => (
-          <li>
-            <a href={href} target="_blank" class="social-link text-white hover:text-red-600 transition duration-300">
-              <Icon class="" />
-            </a>
-          </li>
-        ))}
-      </ul>
-      
-      
-    </div>
-  </div>
-</footer> -->
-
 <footer id="ja75-footer" class="py-28 text-white">
   <div class="container max-w-7xl mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+    <!-- <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
       <div class="ja75-widget">
         <h4 class="text-xl font-inconsolata font-normal mb-8">Juan Amieva</h4>
         <p class="text-lg">
-          Explorador sonoro con 30 años de experiencia y desarrollador de software desde hace 5 años. Creo puentes entre sonido y tecnología.
+          Apasionado por el sonido, la música y la tecnología. Fusionando lo analógico con lo digital para crear nuevas experiencias.
         </p>
       </div>
       <div class="ja75-widget md:order-2">
         <h4 class="text-xl font-inconsolata font-normal mb-8">Enlaces</h4>
         <ul class="space-y-2">
           {links.map((link) => (
-            <li key={link.text}>
+            <li ={link.text}>
               <a href={link.href} class="text-white hover:text-[#FEE856] transition duration-300">
                 {link.text}
               </a>
@@ -120,7 +55,7 @@ const socialLinks = [
         <h4 class="text-xl font-inconsolata font-normal mb-8">Categorías</h4>
         <ul class="space-y-2">
           {categories.map((category) => (
-            <li key={category.text}>
+            <li ={category.text}>
               <a href={category.href} class="text-white hover:text-[#FEE856] transition duration-300">
                 {category.text}
               </a>
@@ -137,12 +72,12 @@ const socialLinks = [
           <li><a href={`https://${contactInfo[3]}`} class="text-white/70 hover:text-[#FEE856] transition duration-300">{contactInfo[3]}</a></li>
         </ul>
       </div>
-    </div>
+    </div> -->
     <div class="text-center">
-      <p class="text-sm">
+      <p class="text-lg">
         <small class="block">© 2025 Juan Amieva. Todos los derechos reservados.</small>
         <small class="block">
-          Creado por Juan Amieva con <a href="https://astro.build" target="_blank" class="text-[#FEE856] hover:text-white transition duration-300">Astro</a>
+          Creado por J75 con <a href="https://astro.build" target="_blank" class="text-astro-accent-pink hover:text-white transition duration-300">Astro</a>
         </small>
       </p>
       <ul class="flex justify-center space-x-4 mt-4">
@@ -151,8 +86,8 @@ const socialLinks = [
             <a 
               href={href} 
               target="_blank" 
-              class="social-link text-white hover:text-[#FEE856] transition duration-300"
-              aria-label={`Sigue a Juan Amieva en ${platform}`} // Añadido aria-label para mejorar accesibilidad
+              class="social-link text-white hover:text-astro-accent-pink transition duration-300"
+              aria-label={`Sigue a J75 en ${platform}`} 
             >
               <Icon class="w-6 h-6" />
             </a>

@@ -3,7 +3,7 @@ interface Props {
   pdf: string;
   text?: string;
 }
-const { pdf, text = "Descargar PDF" } = Astro.props;
+const { pdf, text = "PDF" } = Astro.props;
 ---
 
 {pdf && (

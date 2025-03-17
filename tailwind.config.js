@@ -33,6 +33,9 @@ module.exports = {
           white: '#FFFFFF',       // Blanco (texto y fondos claros)
         },
       },
+      screens: {
+        xs: '431px', // Nuevo breakpoint
+      },
     },
   },
   plugins: [

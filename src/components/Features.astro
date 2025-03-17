@@ -1,72 +1,80 @@
 ---
 const features = [
   {
-    title: "Exploración sonora",
+    title: "Desarrollo Backend escalable y eficiente",
     description:
-      "Llevo 30 años investigando el sonido como arte, herramienta y comunicación, desafiando sus límites con un enfoque experimental.",
-   icon: "/icons/waveform.svg",
+      " Implementación de sistemas optimizados con Node.js, Express y MongoDB, priorizando rendimiento, seguridad y mantenimiento.",
+    icon: "/icons/waveform.svg",
   },
   {
-    title: "Desarrollo dinámico",
+    title: "Optimización de experiencia y rendimiento web",
     description:
-      "Con 5 años creando software innovador, fusiono código y creatividad, respaldado por una vida de curiosidad tecnológica.",
+      "Aplicación de buenas prácticas en frontend con Astro, Tailwind y JavaScript, enfocadas en usabilidad, velocidad de carga y accesibilidad.",
     icon: "/icons/code-braces.svg",
   },
   {
-    title: "Visión sistémica",
+    title: "Análisis y exploración del sonido",
     description:
-      "25 años explorando tecnología me han enseñado a ver los problemas como partes de un todo, encontrando soluciones más allá de lo evidente.",
+      "Estudio de las propiedades del sonido en el tiempo y el espacio, su percepción y su impacto en diferentes contextos.",
     icon: "/icons/eye-circle.svg",
   },
   {
-    title: "Pensamiento disruptivo",
+    title: "Sonido como arte y funcionalidad",
     description:
-      "Mis reflexiones, como el ensayo sobre prácticas sonoras, buscan redefinir cómo entendemos el sonido y la tecnología.",
+      "Comprensión del sonido tanto en su expresión artística como en su uso práctico, ritual y comunicativo.",
     icon: "/icons/book-open-variant.svg",
   },
   {
-    title: "Proyectos híbridos",
+    title: "Adaptabilidad y trabajo en equipo",
     description:
-      "Combino desarrollo y sonido en creaciones únicas que exploran la intersección entre lo digital y lo sonoro.",
+      "Experiencia en entornos estructurados, colaborando con diferentes niveles jerárquicos y aportando valor al equipo.",
     icon: "/icons/puzzle.svg",
   },
   {
-    title: "Conexión creativa",
+    title: "Visión analítica y estructurada",
     description:
-      "Mis soluciones y exploraciones buscan resonar con las personas, uniendo funcionalidad con experiencias humanas.",
+      "Enfoque en soluciones estratégicas, optimización de procesos y toma de decisiones fundamentadas.",
     icon: "/icons/heart-pulse.svg",
   },
 ];
 ---
 
-<div id="ja75-features" class=" py-28">
+<div id="j75-features" class="py-28">
   <div class="container max-w-7xl mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-      {features.map((feature) => (
-        <div class="flex items-start space-x-4 animate-fade-in">
-          <span class="flex items-center justify-center w-16 h-16 bg-white rounded-full">
-            <img src={feature.icon} alt={feature.title} class="w-8 h-8 text-[#DD356E]" />
-          </span>
-          <div class="flex-1">
-            <h3 class="text-2xl font-inconsolata font-normal mb-2">{feature.title}</h3>
-            <p class="text-[15px] text-white mb-2">{feature.description}</p>
-            <p>
-              <a href="#" class="text-white hover:text-[#DD356E] transition duration-300 flex items-center space-x-1">
-                <span>Descubre más</span>
-                <img src="/icons/arrow-right.svg" alt="Arrow right" class="w-5 h-5" />
-              </a>
-            </p>
+      {
+        features.map((feature) => (
+          <div class="flex items-start space-x-4 animate-fade-in">
+            <span class="flex items-center justify-center w-16 h-16 bg-white rounded-full">
+              <img
+                src={feature.icon}
+                alt={feature.title}
+                class="w-8 h-8 text-[#DD356E]"
+              />
+            </span>
+            <div class="flex-1">
+              <h3 class="text-2xl font-inconsolata font-normal mb-2">
+                {feature.title}
+              </h3>
+              <p class="text-[15px] text-white mb-2">{feature.description}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </div>
 
 <style>
   @keyframes fade-in {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   .animate-fade-in {
     animation: fade-in 1s ease-out forwards;

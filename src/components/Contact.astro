@@ -5,7 +5,7 @@ export interface Props {
 const { title = "Contacto - Juan Amieva" } = Astro.props;
 ---
 
-<section id="ja75-contact" class="py-28">
+<section id="j75-contact" class="py-28">
   <div class="container max-w-7xl mx-auto px-4">
     <!-- Título y descripción -->
     <div class="text-center mb-20 animate-fade-in">
@@ -17,79 +17,49 @@ const { title = "Contacto - Juan Amieva" } = Astro.props;
       </p>
     </div>
 
-    <!-- Contenido de contacto -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Información de contacto -->
-      <div class="md:col-span-1 animate-fade-in">
-        <h3 class="text-2xl font-inconsolata font-normal mb-8 text-white">
-          Contacto
-        </h3>
-        <ul class="space-y-4 text-lg text-white">
-          <li class="flex items-start">
-            <span class="icon-[mdi:map-marker] w-6 h-6 mr-2 text-[#DD356E]"></span>
-            Buenos Aires, Argentina
-          </li>
-          <li class="flex items-start">
-            <span class="icon-[mdi:phone] w-6 h-6 mr-2 text-[#DD356E]"></span>
-            <a href="tel:+5491112345678" class="hover:text-[#DD356E] transition duration-300">
-              +54 9 11 1234-5678
-            </a>
-          </li>
-          <li class="flex items-start">
-            <span class="icon-[mdi:email] w-6 h-6 mr-2 text-[#DD356E]"></span>
-            <a href="mailto:juan@amieva.com" class="hover:text-[#DD356E] transition duration-300">
-              juan@amieva.com
-            </a>
-          </li>
-          <li class="flex items-start">
-            <span class="icon-[mdi:web] w-6 h-6 mr-2 text-[#DD356E]"></span>
-            <a href="https://juanamieva.com" class="hover:text-[#DD356E] transition duration-300">
-              juanamieva.com
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Formulario -->
-      <div class="md:col-span-2 animate-fade-in">
-        <form action="#" method="POST" class="space-y-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="form-group">
-              <input
-                type="text"
-                name="name"
-                class="w-full h-12 px-4 text-lg font-inconsolata border-2 border-white/10 rounded-md focus:border-[#DD356E] focus:outline-none"
-                placeholder="Nombre"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="email"
-                name="email"
-                class="w-full h-12 px-4 text-lg font-inconsolata border-2 border-black/10 rounded-md focus:border-[#DD356E] focus:outline-none"
-                placeholder="Email"
-                required
-              />
-            </div>
+    <!-- Contenedor del formulario con max-width -->
+    <div class="max-w-lg mx-auto animate-fade-in">
+      <form action="#" method="POST" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="form-group">
+            <input
+              type="text"
+              name="name"
+              class="w-full h-12 px-4 text-lg font-inconsolata border-2 border-white/10 rounded-md focus:border-[#DD356E] focus:outline-none bg-transparent text-white placeholder-white/50"
+              placeholder="Nombre"
+              required
+            />
           </div>
           <div class="form-group">
-            <textarea
-              name="message"
-              class="w-full h-40 px-4 py-2 text-lg font-inconsolata border-2 border-black/10 rounded-md focus:border-[#DD356E] focus:outline-none"
-              placeholder="Tu mensaje"
-              required></textarea>
+            <input
+              type="email"
+              name="email"
+              class="w-full h-12 px-4 text-lg font-inconsolata border-2 border-white/10 rounded-md focus:border-[#DD356E] focus:outline-none bg-transparent text-white placeholder-white/50"
+              placeholder="Email"
+              required
+            />
           </div>
-          <div class="form-group">
-            <button
-              type="submit"
-              class="bg-astro-primary-orange text-astro-primary-dark text-lg font-inconsolata uppercase py-4 px-12 rounded-full hover:bg-[#e14b7e] hover:shadow-lg transition duration-300"
-            >
-              Enviar mensaje
-            </button>
-          </div>
-        </form>
-      </div>
+        </div>
+        <div class="form-group">
+          <textarea
+            name="message"
+            id="message"
+            class="w-full h-40 px-4 py-2 text-lg font-inconsolata border-2 border-white/10 rounded-md focus:border-[#DD356E] focus:outline-none bg-transparent text-white placeholder-white/50"
+            placeholder="Tu mensaje"
+            maxlength="140"
+            required
+          ></textarea>
+          <p class="text-sm text-white/80 mt-2 text-right" id="char-count">0/140</p>
+        </div>
+        <div class="form-group flex justify-center">
+          <button
+            type="submit"
+            class="bg-astro-accent-pink text-astro-primary-dark text-lg font-inconsolata  py-4 px-12 rounded-full hover:bg-[#e14b7e] hover:shadow-lg transition duration-300"
+          >
+            Enviar mensaje
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </section>
@@ -108,4 +78,60 @@ const { title = "Contacto - Juan Amieva" } = Astro.props;
   .animate-fade-in {
     animation: fade-in 1s ease-out forwards;
   }
+
+  /* Ajustes para el formulario */
+  form {
+    width: 100%;
+  }
+
+  /* Asegurar que los campos del formulario sean responsivos */
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Deshabilitar redimensionado del textarea */
+  .form-group textarea {
+    resize: none; /* Evitar redimensionado */
+  }
+
+  /* Centrar el botón en pantallas grandes */
+  .form-group button {
+    width: auto;
+  }
+
+  /* Media query para pantallas pequeñas */
+  @media (max-width: 640px) {
+    .form-group input,
+    .form-group textarea {
+      font-size: 0.875rem;
+    }
+    .form-group button {
+      width: 100%;
+      padding: 1rem 2rem;
+    }
+  }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Asegura a TypeScript que el elemento es un <textarea>
+    const textarea = document.getElementById("message") as HTMLTextAreaElement;
+    const charCount = document.getElementById("char-count");
+
+    if (textarea && charCount) {
+      textarea.addEventListener("input", () => {
+        const currentLength = textarea.value.length; // Ahora TypeScript sabe que textarea tiene la propiedad "value"
+        charCount.textContent = `${currentLength}/140`;
+
+        // (Opcional) Cambiar color si se acerca al límite
+        if (currentLength > 120) {
+          charCount.style.color = "#DD356E";
+        } else {
+          charCount.style.color = "rgba(255, 255, 255, 0.8)";
+        }
+      });
+    }
+  });
+</script>

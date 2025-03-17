@@ -3,15 +3,15 @@
 ---
 
 
-<nav class="ja75-nav fixed w-full bg-gradient-to-r from-[#0a0716] via-[#482dbd] to-[#3b259e] text-astro-white z-50 flex items-center justify-between p-6">
+<nav class="j75-nav fixed w-full bg-gradient-to-r from-[#0a0716] via-[#482dbd] to-[#3b259e] text-astro-white z-50 flex items-center justify-between p-6">
   <!-- Logo -->
   <div class="text-4xl font-bold font-inconsolata">
-    <a href="index.html">JA75<span class="text-astro-primary-orange">.</span></a>
+    <a href="index.html">J75<span class="text-astro-primary-orange">.</span></a>
   </div>
 
   <!-- Ícono de hamburguesa personalizado -->
   <button
-    id="ja75-nav-toggle"
+    id="j75-nav-toggle"
     class="md:hidden focus:outline-none relative z-[60]"
     aria-label="Toggle menu"
   >
@@ -35,28 +35,26 @@
   >
     <div class="p-4 flex flex-col h-full">
       <ul class="space-y-4 mt-4 flex-grow">
-        <li><a href="/" class="nav-link block hover:text-astro-secondary-light">Inicio</a></li>
-        <li><a href="/about/" class="nav-link block hover:text-astro-secondary-light">Acerca</a></li>
-        <!-- <li><a href="/blog/" class="nav-link hover:text-astro-secondary-light">Blog</a></li> -->
-        <li><a href="/portfolioPage/" class="nav-link block hover:text-astro-secondary-light">Portfolio</a></li>
-        <li><a href="/contacto/" class="nav-link block hover:text-astro-secondary-light">Contacto</a></li>
+        <li><a href="#j75-header" class="nav-link block hover:text-astro-secondary-light">Inicio</a></li>
+        <li><a href="#j75-about" class="nav-link block hover:text-astro-secondary-light">Acerca</a></li>
+        <li><a href="#j75-portfolio" class="nav-link block hover:text-astro-secondary-light">Portfolio</a></li>
+        <li><a href="#j75-contact" class="nav-link block hover:text-astro-secondary-light">Contacto</a></li>
       </ul>
     </div>
   </div>
 
   <!-- Menú desktop -->
   <ul class="hidden md:flex space-x-6 text-2xl">
-    <li><a href="/" class="nav-link hover:text-astro-secondary-light">Inicio</a></li>
-    <li><a href="/about/" class="nav-link hover:text-astro-secondary-light">Acerca</a></li>
-    <!-- <li><a href="/blog/" class="nav-link hover:text-astro-secondary-light">Blog</a></li> -->
-    <li><a href="/portfolioPage/" class="nav-link hover:text-astro-secondary-light">Portfolio</a></li>
-    <li><a href="/contacto/" class="nav-link hover:text-astro-secondary-light">Contacto</a></li>
+    <li><a href="#j75-header" class="nav-link hover:text-astro-secondary-light">Inicio</a></li>
+    <li><a href="#j75-about" class="nav-link hover:text-astro-secondary-light">Acerca</a></li>
+    <li><a href="#j75-portfolio" class="nav-link hover:text-astro-secondary-light">Portfolio</a></li>
+    <li><a href="#j75-contact" class="nav-link hover:text-astro-secondary-light">Contacto</a></li>
   </ul>
 </nav>
 
 
 <script>
-  const menuToggle = document.getElementById("ja75-nav-toggle");
+  const menuToggle = document.getElementById("j75-nav-toggle");
   const mobileMenu = document.getElementById("mobile-menu");
   const overlay = document.getElementById("overlay");
 
@@ -85,7 +83,7 @@
   }
 
   /* Estilos para las líneas del ícono de hamburguesa */
-  #ja75-nav-toggle .hamburger-icon .line {
+  #j75-nav-toggle .hamburger-icon .line {
     background-color: #fff; /* Usamos blanco directo ya que Tailwind no aplica aquí */
     height: 3px;
     margin: 4px 0;
@@ -95,22 +93,22 @@
     display: block;
   }
 
-  #ja75-nav-toggle .line1,
-  #ja75-nav-toggle .line2,
-  #ja75-nav-toggle .line3 {
+  #j75-nav-toggle .line1,
+  #j75-nav-toggle .line2,
+  #j75-nav-toggle .line3 {
     width: 25px;
     transform-origin: left center;
   }
 
-  #ja75-nav-toggle.open .line1 {
+  #j75-nav-toggle.open .line1 {
     transform: rotate(35deg);
   }
 
-  #ja75-nav-toggle.open .line2 {
+  #j75-nav-toggle.open .line2 {
     opacity: 0;
   }
 
-  #ja75-nav-toggle.open .line3 {
+  #j75-nav-toggle.open .line3 {
     transform: rotate(-35deg);
   }
 
