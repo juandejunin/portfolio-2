@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/tailwind": "^5.1.5",
     "astro": "^5.4.1",
+    "mongodb": "^6.15.0",
     "swiper": "^11.2.4",
     "tailwindcss": "^3.4.17"
   },

@@ -13,13 +13,14 @@ const { title = "Contacto - Juan Amieva" } = Astro.props;
         ¡Hablemos!
       </h2>
       <p class="text-lg text-white/80">
-        ¿Tienes un proyecto sonoro o digital en mente? Estoy listo para colaborar contigo.
+        ¿Tienes un proyecto sonoro o digital en mente? Estoy listo para
+        colaborar contigo.
       </p>
     </div>
 
     <!-- Contenedor del formulario con max-width -->
     <div class="max-w-lg mx-auto animate-fade-in">
-      <form action="https://formspree.io/f/xkgjgvby" method="POST" class="space-y-6">
+      <form action="/api/contact" method="POST" class="space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="form-group">
             <label for="name" class="sr-only">Nombre</label>
@@ -52,9 +53,10 @@ const { title = "Contacto - Juan Amieva" } = Astro.props;
             class="w-full h-40 px-4 py-2 text-lg font-inconsolata border-2 border-white/10 rounded-md focus:border-[#DD356E] focus:outline-none bg-transparent text-white placeholder-white/50"
             placeholder="Tu mensaje"
             maxlength="140"
-            required
-          ></textarea>
-          <p class="text-sm text-white/80 mt-2 text-right" id="char-count">0/140</p>
+            required></textarea>
+          <p class="text-sm text-white/80 mt-2 text-right" id="char-count">
+            0/140
+          </p>
         </div>
         <div class="form-group flex justify-center">
           <button
@@ -150,26 +152,50 @@ const { title = "Contacto - Juan Amieva" } = Astro.props;
     }
 
     if (form) {
-      form.addEventListener("submit", (e) => {
-        const email = form.querySelector("#email") as HTMLInputElement;
-        const name = form.querySelector("#name") as HTMLInputElement;
-        const message = textarea.value;
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-        // Validación básica del lado del cliente
-        if (!email.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
-          e.preventDefault();
+        // Tipar correctamente los elementos
+        const nameInput = form.querySelector("#name") as HTMLInputElement;
+        const emailInput = form.querySelector("#email") as HTMLInputElement;
+        const messageTextarea = textarea; // Ya está tipado arriba como HTMLTextAreaElement
+
+        // Obtener los valores
+        const name = nameInput.value;
+        const email = emailInput.value;
+        const message = messageTextarea.value;
+
+        // Validación básica
+        if (!email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
           alert("Por favor, ingresa un email válido.");
           return;
         }
-        if (name.value.trim().length < 2) {
-          e.preventDefault();
+        if (name.trim().length < 2) {
           alert("El nombre debe tener al menos 2 caracteres.");
           return;
         }
         if (message.trim().length < 5) {
-          e.preventDefault();
           alert("El mensaje debe tener al menos 5 caracteres.");
           return;
+        }
+
+        try {
+          const response = await fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, message }),
+          });
+
+          const data = await response.json();
+          if (response.ok) {
+            alert("¡Mensaje enviado y guardado con éxito!");
+            form.reset();
+            if (charCount) charCount.textContent = "0/140";
+          } else {
+            alert(`Error: ${data.error}`);
+          }
+        } catch (error) {
+          alert("Hubo un problema al enviar el mensaje.");
         }
       });
     }
