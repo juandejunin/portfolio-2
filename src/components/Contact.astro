@@ -19,21 +19,25 @@ const { title = "Contacto - Juan Amieva" } = Astro.props;
 
     <!-- Contenedor del formulario con max-width -->
     <div class="max-w-lg mx-auto animate-fade-in">
-      <form action="#" method="POST" class="space-y-6">
+      <form action="https://formspree.io/f/xkgjgvby" method="POST" class="space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="form-group">
+            <label for="name" class="sr-only">Nombre</label>
             <input
               type="text"
               name="name"
+              id="name"
               class="w-full h-12 px-4 text-lg font-inconsolata border-2 border-white/10 rounded-md focus:border-[#DD356E] focus:outline-none bg-transparent text-white placeholder-white/50"
               placeholder="Nombre"
               required
             />
           </div>
           <div class="form-group">
+            <label for="email" class="sr-only">Email</label>
             <input
               type="email"
               name="email"
+              id="email"
               class="w-full h-12 px-4 text-lg font-inconsolata border-2 border-white/10 rounded-md focus:border-[#DD356E] focus:outline-none bg-transparent text-white placeholder-white/50"
               placeholder="Email"
               required
@@ -41,6 +45,7 @@ const { title = "Contacto - Juan Amieva" } = Astro.props;
           </div>
         </div>
         <div class="form-group">
+          <label for="message" class="sr-only">Mensaje</label>
           <textarea
             name="message"
             id="message"
@@ -54,7 +59,7 @@ const { title = "Contacto - Juan Amieva" } = Astro.props;
         <div class="form-group flex justify-center">
           <button
             type="submit"
-            class="bg-astro-accent-pink text-astro-primary-dark text-lg font-inconsolata  py-4 px-12 rounded-full hover:bg-[#e14b7e] hover:shadow-lg transition duration-300"
+            class="bg-astro-accent-pink text-astro-primary-dark text-lg font-inconsolata py-4 px-12 rounded-full hover:bg-[#e14b7e] hover:shadow-lg transition duration-300"
           >
             Enviar mensaje
           </button>
@@ -93,7 +98,7 @@ const { title = "Contacto - Juan Amieva" } = Astro.props;
 
   /* Deshabilitar redimensionado del textarea */
   .form-group textarea {
-    resize: none; /* Evitar redimensionado */
+    resize: none;
   }
 
   /* Centrar el botón en pantallas grandes */
@@ -112,24 +117,59 @@ const { title = "Contacto - Juan Amieva" } = Astro.props;
       padding: 1rem 2rem;
     }
   }
+
+  /* Ocultar etiquetas visualmente pero mantenerlas accesibles */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
 </style>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Asegura a TypeScript que el elemento es un <textarea>
+    const form = document.querySelector("form");
     const textarea = document.getElementById("message") as HTMLTextAreaElement;
     const charCount = document.getElementById("char-count");
 
     if (textarea && charCount) {
       textarea.addEventListener("input", () => {
-        const currentLength = textarea.value.length; // Ahora TypeScript sabe que textarea tiene la propiedad "value"
+        const currentLength = textarea.value.length;
         charCount.textContent = `${currentLength}/140`;
-
-        // (Opcional) Cambiar color si se acerca al límite
         if (currentLength > 120) {
           charCount.style.color = "#DD356E";
         } else {
           charCount.style.color = "rgba(255, 255, 255, 0.8)";
+        }
+      });
+    }
+
+    if (form) {
+      form.addEventListener("submit", (e) => {
+        const email = form.querySelector("#email") as HTMLInputElement;
+        const name = form.querySelector("#name") as HTMLInputElement;
+        const message = textarea.value;
+
+        // Validación básica del lado del cliente
+        if (!email.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
+          e.preventDefault();
+          alert("Por favor, ingresa un email válido.");
+          return;
+        }
+        if (name.value.trim().length < 2) {
+          e.preventDefault();
+          alert("El nombre debe tener al menos 2 caracteres.");
+          return;
+        }
+        if (message.trim().length < 5) {
+          e.preventDefault();
+          alert("El mensaje debe tener al menos 5 caracteres.");
+          return;
         }
       });
     }
