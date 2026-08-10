@@ -4,7 +4,7 @@ import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 ---
 
-<!doctype html> 
+<!doctype html>
 <html lang="es">
   <!-- Código modificado en el archivo HTML -->
   <head>
@@ -47,7 +47,13 @@ import "../styles/global.css";
       sizes="512x512"
       href="/favicons/android-chrome-512x512.png"
     />
-    <meta name="description" content="Portfolio de Juan Amieva: músico y desarrollador. Herramientas para creadores de contenido, automatización con Python, IA generativa y desarrollo web con Node.js, Astro y Tailwind." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#181040" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta
+      name="description"
+      content="Portfolio de Juan Amieva: músico y desarrollador. Herramientas para creadores de contenido, automatización con Python, IA generativa y desarrollo web con Node.js, Astro y Tailwind."
+    />
     <meta
       name="keywords"
       content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"
@@ -58,8 +64,14 @@ import "../styles/global.css";
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://j75.es/" />
-    <meta property="og:title" content="J75 — Juan Amieva | Desarrollador y Explorador Sonoro" />
-    <meta property="og:description" content="Portfolio de Juan Amieva: músico y desarrollador. Herramientas para creadores de contenido, automatización con Python, IA generativa y desarrollo web con Node.js, Astro y Tailwind." />
+    <meta
+      property="og:title"
+      content="J75 — Juan Amieva | Desarrollador y Explorador Sonoro"
+    />
+    <meta
+      property="og:description"
+      content="Portfolio de Juan Amieva: músico y desarrollador. Herramientas para creadores de contenido, automatización con Python, IA generativa y desarrollo web con Node.js, Astro y Tailwind."
+    />
     <meta property="og:image" content="https://j75.es/images/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -69,9 +81,30 @@ import "../styles/global.css";
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://j75.es/" />
-    <meta name="twitter:title" content="J75 — Juan Amieva | Desarrollador y Explorador Sonoro" />
-    <meta name="twitter:description" content="Portfolio de Juan Amieva: músico y desarrollador. Herramientas para creadores de contenido, automatización con Python, IA generativa y desarrollo web." />
+    <meta
+      name="twitter:title"
+      content="J75 — Juan Amieva | Desarrollador y Explorador Sonoro"
+    />
+    <meta
+      name="twitter:description"
+      content="Portfolio de Juan Amieva: músico y desarrollador. Herramientas para creadores de contenido, automatización con Python, IA generativa y desarrollo web."
+    />
     <meta name="twitter:image" content="https://j75.es/images/og-image.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Juan Amieva",
+        "url": "https://j75.es",
+        "jobTitle": "Desarrollador de software y músico",
+        "description": "Músico con amplios conocimientos de desarrollo. Soluciones tecnológicas para músicos y creadores de contenido.",
+        "sameAs": [
+          "https://www.linkedin.com/in/juan-amieva/",
+          "https://github.com/juandejunin"
+        ]
+      }
+    </script>
 
     <!-- Preconnect para Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
