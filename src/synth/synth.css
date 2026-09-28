@@ -1,0 +1,131 @@
+/* Sintetizador aditivo — estilos globales pero acotados a .synth para no chocar con el resto de la web.
+   Se aplican a elementos creados por JS (barras, teclas), por eso no son estilos "scoped" de Astro. */
+.synth {
+  --acento: #DD356E;
+  --acento-hover: #e14b7e;
+  --acento-claro: #ff8fb5;   /* acento para texto sobre fondo oscuro */
+  --panel: rgba(10, 7, 22, .45);
+  --borde: rgba(255, 255, 255, .1);
+  --borde-fuerte: rgba(255, 255, 255, .25);
+  --texto-suave: rgba(255, 255, 255, .7);
+
+  padding: 7.5rem 1rem 5rem; /* deja sitio a la barra de navegación fija */
+  font-size: 17px;
+  line-height: 1.5;
+  color: #fff;
+}
+.synth-wrap { max-width: 1100px; margin: 0 auto; }
+.synth h1 { margin: 0 0 1rem; font-size: 2.5rem; font-weight: 400; line-height: 1.2; }
+.synth h2 { margin: 2rem 0 .75rem; font-size: 1.5rem; font-weight: 400; line-height: 1.3; }
+.synth .lead { max-width: 70ch; margin: 0 0 1.75rem; color: var(--texto-suave); }
+
+.synth button {
+  margin: 3px; padding: 7px 16px; font: inherit; color: #fff; cursor: pointer;
+  background: rgba(255, 255, 255, .06); border: 1px solid var(--borde-fuerte); border-radius: 999px;
+  transition: border-color .2s, background-color .2s;
+}
+.synth button:hover { border-color: var(--acento); background: rgba(221, 53, 110, .15); }
+.synth #stop { color: #0a0716; background: var(--acento); border-color: var(--acento); }
+.synth #stop:hover { background: var(--acento-hover); border-color: var(--acento-hover); }
+.synth button:focus-visible, .synth input:focus-visible, .synth #spectrum:focus-visible {
+  outline: 2px solid var(--acento-claro); outline-offset: 2px;
+}
+.synth input[type=number] {
+  width: 90px; padding: 4px 8px; font: inherit; color: #fff;
+  background: transparent; border: 2px solid var(--borde); border-radius: 6px;
+}
+.synth input[type=number]:focus { border-color: var(--acento); }
+.synth input[type=range] { accent-color: var(--acento); }
+
+.synth .top { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-bottom: 14px; }
+
+/* Espectro */
+.synth #spectrum {
+  display: flex; gap: 2px; height: 220px; padding: 8px; overflow-x: auto;
+  background: var(--panel); border: 1px solid var(--borde); border-radius: 8px;
+}
+.synth .bar {
+  flex: 1 0 8px; min-width: 8px; display: flex; flex-direction: column; align-items: center;
+  font-size: 11px; color: var(--texto-suave); border-radius: 3px; cursor: pointer;
+}
+.synth .bar:hover { background: rgba(255, 255, 255, .08); }
+.synth .track { flex: 1; width: 100%; display: flex; align-items: flex-end; }
+.synth .fill { width: 100%; min-height: 1px; background: #a99cff; border-radius: 2px 2px 0 0; }
+.synth .bar.selected { background: rgba(255, 255, 255, .1); color: var(--acento-claro); }
+.synth .bar.selected .fill { background: var(--acento); }
+.synth .bar.inaudible .fill { background: rgba(255, 255, 255, .2); }
+
+/* Editor de armónico */
+.synth #editor, .synth #env {
+  margin-top: 14px; padding: 14px;
+  background: var(--panel); border: 1px solid var(--borde); border-radius: 8px;
+}
+.synth #editor { display: grid; gap: 8px; }
+.synth #editor input[type=range] { width: 100%; }
+.synth #value { margin-left: 14px; color: var(--acento-claro); }
+
+/* Envolvente */
+.synth #env h2 { margin: 0 0 8px; font-size: 1.125rem; }
+.synth #env-svg { display: block; width: 100%; height: 90px; fill: none; background: rgba(10, 7, 22, .6); border-radius: 6px; }
+.synth #env-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 10px; }
+.synth #env-controls label { display: grid; gap: 4px; }
+.synth #env-controls output { color: var(--acento-claro); }
+
+/* Teclado */
+/* Teclado */
+.synth #piano-wrap { overflow-x: auto; padding-bottom: 6px; container-type: inline-size; }
+.synth #piano {
+  /* 15 teclas blancas repartidas por el ancho disponible; nunca menos de 44px (en móvil hace scroll horizontal) */
+  --w: max(44px, calc(100cqw / 15));
+  position: relative; display: flex; width: max-content;
+  height: clamp(160px, calc(var(--w) * 2.8), 220px); /* crece con las teclas para mantener la proporción */
+  user-select: none; touch-action: none;
+}
+.synth .key { box-sizing: border-box; cursor: pointer; }
+.synth .white {
+  width: var(--w); height: 100%; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 6px;
+  background: #f3f4f6; border: 1px solid #9ca3af; border-radius: 0 0 5px 5px; color: #4b5563; font-size: 12px;
+}
+.synth .black {
+  position: absolute; top: 0; z-index: 1; width: calc(var(--w) * .6); height: 62%;
+  background: #1f2937; border: 1px solid #000; border-radius: 0 0 4px 4px;
+}
+.synth .white.active { background: var(--acento-claro); }
+.synth .black.active { background: var(--acento); }
+
+/* Texto desplegable "Leer más" */
+.synth .more { max-width: 70ch; margin: -.75rem 0 1.75rem; }
+.synth .more summary {
+  display: inline-block; cursor: pointer; list-style: none;
+  color: var(--acento-claro); text-decoration: underline; text-underline-offset: 3px;
+}
+.synth .more summary::-webkit-details-marker { display: none; }
+.synth .more summary:hover { color: #fff; }
+.synth .more .ocultar, .synth .more[open] .ver { display: none; }
+.synth .more[open] .ocultar { display: inline; }
+.synth .more-body {
+  margin-top: .75rem; padding: 14px 18px;
+  background: var(--panel); border: 1px solid var(--borde); border-radius: 8px;
+  color: var(--texto-suave);
+}
+.synth .more h3 { margin: 1.25rem 0 .4rem; font-size: 1.125rem; font-weight: 400; color: #fff; }
+.synth .more h3:first-child { margin-top: 0; }
+.synth .more p, .synth .more ul { margin: 0 0 .6rem; }
+.synth .more ul { padding-left: 1.25rem; list-style: disc; }
+.synth .more li { margin-bottom: .4rem; }
+.synth .more strong { color: #fff; font-weight: 600; }
+.synth .more a { color: var(--acento-claro); text-decoration: underline; text-underline-offset: 3px; }
+.synth .more a:hover { color: #fff; }
+.synth kbd {
+  display: inline-block; min-width: 1.4em; padding: 0 5px; text-align: center;
+  font: 13px/1.5 monospace; color: #fff;
+  background: rgba(255, 255, 255, .1); border: 1px solid var(--borde-fuerte); border-radius: 4px;
+}
+
+@media (max-width: 640px) {
+  .synth h1 { font-size: 2rem; }
+  .synth #spectrum { height: 180px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .synth button { transition: none; }
+}

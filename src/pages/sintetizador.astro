@@ -1,0 +1,107 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import "../synth/synth.css";
+---
+
+<MainLayout
+  title="Sintetizador aditivo — J75"
+  description="Crea timbres sumando armónicos: ajusta el espectro, la envolvente ADSR y toca el resultado con el teclado."
+>
+  <main id="synth-app" class="synth">
+    <div class="synth-wrap">
+      <h1>Sintetizador aditivo</h1>
+<p class="lead">
+  Herramienta didáctica para ver y oír cómo se construye un sonido complejo: sumando armónicos (su
+  espectro) y dándole forma en el tiempo (su envolvente).
+</p>
+
+<details class="more">
+  <summary><span class="ver">Leer más</span><span class="ocultar">Leer menos</span></summary>
+  <div class="more-body">
+    <h3>Para qué sirve</h3>
+    <p>
+      Nació como apoyo para explicar cómo se componen los sonidos reales. Es una herramienta de estudio
+      y de prueba: no aspira a sonar como un instrumento profesional ni a competir con un sintetizador
+      comercial. Su objetivo es que puedas mover las piezas y oír al instante qué cambia.
+    </p>
+
+    <h3>Qué estás viendo</h3>
+    <ul>
+      <li>
+        <strong>Espectro.</strong> Un sonido complejo es la suma de ondas simples llamadas armónicos, cuyas
+        frecuencias son múltiplos de la fundamental. Cada barra es un armónico y su altura, su nivel. Lo que
+        distingue una flauta de un violín es, en buena parte, cuánto pesa cada armónico.
+      </li>
+      <li>
+        <strong>Envolvente (ADSR).</strong> Cómo evoluciona el volumen en el tiempo: <em>ataque</em> (lo que
+        tarda en llegar al máximo), <em>decaimiento</em> (la caída hasta el nivel de sostenimiento),
+        <em>sostenimiento</em> (el nivel mientras mantienes la tecla) y <em>relajación</em> (lo que tarda en
+        apagarse al soltarla).
+      </li>
+      <li>
+        <strong>Presets.</strong> Combinaciones de espectro y envolvente que se aproximan a distintos tipos
+        de timbre, como punto de partida para experimentar.
+      </li>
+    </ul>
+
+    <h3>Cómo se usa</h3>
+    <ul>
+      <li>Haz clic en una barra para elegir ese armónico y ajusta su nivel con el slider o los botones de dB.</li>
+      <li>
+        Con el foco en el sintetizador, <kbd>←</kbd> <kbd>→</kbd> cambian de armónico y <kbd>↑</kbd>
+        <kbd>↓</kbd> suben o bajan su nivel.
+      </li>
+      <li>
+        Toca con el ratón, con el dedo o con el teclado del ordenador. Octava inferior:
+        <kbd>Z</kbd> <kbd>S</kbd> <kbd>X</kbd> <kbd>D</kbd> <kbd>C</kbd> <kbd>V</kbd> <kbd>G</kbd>
+        <kbd>B</kbd> <kbd>H</kbd> <kbd>N</kbd> <kbd>J</kbd> <kbd>M</kbd>. Octava superior:
+        <kbd>Q</kbd> <kbd>2</kbd> <kbd>W</kbd> <kbd>3</kbd> <kbd>E</kbd> <kbd>R</kbd> <kbd>5</kbd>
+        <kbd>T</kbd> <kbd>6</kbd> <kbd>Y</kbd> <kbd>7</kbd> <kbd>U</kbd> <kbd>I</kbd>.
+      </li>
+      <li>La fundamental sigue a la última tecla que pulsas. Puedes cambiarla a mano en el campo «Fundamental».</li>
+    </ul>
+
+    <h3>Vídeos relacionados</h3>
+    <p>
+      Esta herramienta acompaña a una serie de vídeos en la que explico cómo funciona el sonido. Si quieres
+      ver estos conceptos con calma, los tienes en
+      <a href="https://www.youtube.com/playlist?list=PLAg8nyOYrico" target="_blank" rel="noopener">YouTube</a>.
+    </p>
+  </div>
+</details>
+
+      <div class="top">
+        <label>Fundamental <input id="freq" type="number" min="20" value="220" /> Hz</label>
+        <label>Armónicos <input id="count" type="number" min="1" value="32" /></label>
+      </div>
+
+      <div id="spectrum" tabindex="0" aria-label="Espectro de armónicos"></div>
+
+      <section id="editor">
+        <div><strong id="title"></strong><output id="value"></output></div>
+        <input id="slider" type="range" aria-label="Nivel del armónico en dB" />
+        <div id="steps"></div>
+      </section>
+
+      <section id="env">
+        <h2>Envolvente (ADSR)</h2>
+        <svg id="env-svg" viewBox="0 0 300 80" preserveAspectRatio="none" role="img" aria-label="Forma de la envolvente"></svg>
+        <div id="env-controls"></div>
+      </section>
+
+      <h2>Presets</h2>
+      <div id="presets"></div>
+
+      <h2>Teclado</h2>
+      <div class="top">
+        <button id="oct-down">Octava −</button><span id="rango"></span><button id="oct-up">Octava +</button>
+        <button id="stop">■ Parar todo</button>
+      </div>
+      <div id="piano-wrap"><div id="piano"></div></div>
+    </div>
+  </main>
+</MainLayout>
+
+<script>
+  import "../synth/main";
+</script>
