@@ -39,47 +39,7 @@
         <li><a href="/#j75-about" class="nav-link block hover:text-astro-secondary-light">Acerca</a></li>
         <li><a href="/#j75-portfolio" class="nav-link block hover:text-astro-secondary-light">Portfolio</a></li>
         <li><a href="/#j75-contact" class="nav-link block hover:text-astro-secondary-light">Contacto</a></li>
-        ---
-
----
-
-
-<nav class="j75-nav fixed w-full bg-gradient-to-r from-[#0a0716] via-[#482dbd] to-[#3b259e] text-astro-white z-50 flex items-center justify-between p-6">
-  <!-- Logo -->
-  <div class="text-4xl font-bold font-inconsolata">
-    <a href="/">J75<span class="text-astro-primary-orange">.</span></a>
-  </div>
-
-  <!-- Ícono de hamburguesa personalizado -->
-  <button
-    id="j75-nav-toggle"
-    class="md:hidden focus:outline-none relative z-[60]"
-    aria-label="Toggle menu"
-  >
-    <div class="hamburger-icon">
-      <span class="line line1"></span>
-      <span class="line line2"></span>
-      <span class="line line3"></span>
-    </div>
-  </button>
-
-  <!-- Overlay con transición -->
-  <div
-    id="overlay"
-    class="fixed inset-0 bg-astro-secondary-dark bg-opacity-50 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out z-40"
-  ></div>
-
-  <!-- Menú lateral -->
-  <div
-    id="mobile-menu"
-    class="fixed inset-y-0 right-0 w-0 pt-14 bg-astro-primary-dark text-astro-white transition-all duration-300 ease-in-out overflow-hidden md:hidden z-50"
-  >
-    <div class="p-4 flex flex-col h-full">
-      <ul class="space-y-4 mt-4 flex-grow">
-        <li><a href="/#j75-header" class="nav-link block hover:text-astro-secondary-light">Inicio</a></li>
-        <li><a href="/#j75-about" class="nav-link block hover:text-astro-secondary-light">Acerca</a></li>
-        <li><a href="/#j75-portfolio" class="nav-link block hover:text-astro-secondary-light">Portfolio</a></li>
-        <li><a href="/#j75-contact" class="nav-link block hover:text-astro-secondary-light">Contacto</a></li>
+        <li><a href="/herramientas" class="nav-link block hover:text-astro-secondary-light">Herramientas</a></li>
       </ul>
     </div>
   </div>
@@ -90,85 +50,7 @@
     <li><a href="/#j75-about" class="nav-link hover:text-astro-secondary-light">Acerca</a></li>
     <li><a href="/#j75-portfolio" class="nav-link hover:text-astro-secondary-light">Portfolio</a></li>
     <li><a href="/#j75-contact" class="nav-link hover:text-astro-secondary-light">Contacto</a></li>
-  </ul>
-</nav>
-
-
-<script>
-  const menuToggle = document.getElementById("j75-nav-toggle");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const overlay = document.getElementById("overlay");
-
-  if (menuToggle && mobileMenu && overlay) {
-    menuToggle.addEventListener("click", () => {
-      menuToggle.classList.toggle("open");
-      mobileMenu.classList.toggle("w-0");
-      mobileMenu.classList.toggle("w-1/4");
-      overlay.classList.toggle("opacity-0");
-      overlay.classList.toggle("pointer-events-none");
-    });
-
-    overlay.addEventListener("click", () => {
-      menuToggle.classList.remove("open");
-      mobileMenu.classList.add("w-0");
-      mobileMenu.classList.remove("w-1/4");
-      overlay.classList.add("opacity-0");
-      overlay.classList.add("pointer-events-none");
-    });
-  }
-</script>
-
-<style>
-  #mobile-menu {
-    top: 0;
-  }
-
-  /* Estilos para las líneas del ícono de hamburguesa */
-  #j75-nav-toggle .hamburger-icon .line {
-    background-color: #fff; /* Usamos blanco directo ya que Tailwind no aplica aquí */
-    height: 3px;
-    margin: 4px 0;
-    transition:
-      transform 0.3s ease,
-      opacity 0.3s ease;
-    display: block;
-  }
-
-  #j75-nav-toggle .line1,
-  #j75-nav-toggle .line2,
-  #j75-nav-toggle .line3 {
-    width: 25px;
-    transform-origin: left center;
-  }
-
-  #j75-nav-toggle.open .line1 {
-    transform: rotate(35deg);
-  }
-
-  #j75-nav-toggle.open .line2 {
-    opacity: 0;
-  }
-
-  #j75-nav-toggle.open .line3 {
-    transform: rotate(-35deg);
-  }
-
-  /* Asegurar que el overlay sea clickable solo cuando esté visible */
-  #overlay:not(.opacity-0) {
-    pointer-events: auto;
-  }
-</style>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Menú desktop -->
-  <ul class="hidden md:flex space-x-6 text-2xl">
-    <li><a href="/#j75-header" class="nav-link hover:text-astro-secondary-light">Inicio</a></li>
-    <li><a href="/#j75-about" class="nav-link hover:text-astro-secondary-light">Acerca</a></li>
-    <li><a href="/#j75-portfolio" class="nav-link hover:text-astro-secondary-light">Portfolio</a></li>
-    <li><a href="/#j75-contact" class="nav-link hover:text-astro-secondary-light">Contacto</a></li>
-    <li><a href="/sintetizador" class="nav-link hover:text-astro-secondary-light">Sintetizador</a></li>
+    <li><a href="/herramientas" class="nav-link hover:text-astro-secondary-light">Herramientas</a></li>
   </ul>
 </nav>
 
