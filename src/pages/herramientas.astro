@@ -1,0 +1,168 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+// Añade aquí cada nueva herramienta descargable, sin tocar el resto de la página.
+const descargables = [
+    {
+        nombre: "R&A Downloader",
+        descripcion:
+            "Descarga videos y audio de YouTube, Instagram, TikTok y X en un clic, gratis y sin instalaciones complicadas.",
+        version: "1.1.0",
+        plataforma: "Windows",
+        enlace: "https://github.com/juandejunin/ra-downloader-releases/releases/download/v1.1.0/RA_Downloader-v1.1.0-windows.zip",
+    },
+];
+---
+
+<MainLayout
+    title="Herramientas — J75"
+    description="Herramientas para creadores de contenido: sintetizador aditivo interactivo y programas descargables como RYA."
+>
+    <main id="herramientas" class="herramientas">
+        <div class="herramientas-wrap">
+            <h1>Herramientas</h1>
+            <p class="lead">
+                Programas y utilidades pensadas para creadores de contenido y
+                para entender mejor cómo funciona el sonido y la automatización.
+            </p>
+
+            <h2>Interactivas</h2>
+            <div class="tarjetas">
+                <a class="tarjeta" href="/sintetizador">
+                    <h3>Sintetizador aditivo</h3>
+                    <p>
+                        Crea timbres sumando armónicos: espectro editable,
+                        envolvente ADSR y teclado.
+                    </p>
+                    <span class="accion">Abrir →</span>
+                </a>
+            </div>
+
+            <h2>Descargables</h2>
+            {
+                descargables.length > 0 ? (
+                    <div class="tarjetas">
+                        {descargables.map((d) => (
+                            <a class="tarjeta" href={d.enlace} download>
+                                <h3>{d.nombre}</h3>
+                                <p>{d.descripcion}</p>
+                                <span class="meta">
+                                    {d.plataforma} · v{d.version}
+                                </span>
+                                <span class="accion">Descargar →</span>
+                            </a>
+                        ))}
+                    </div>
+                ) : (
+                    <p class="vacio">Próximamente.</p>
+                )
+            }
+
+            <p class="aviso">
+                El software descargable se ofrece tal cual, sin garantía, para
+                uso personal. Los archivos se alojan fuera de esta web (GitHub
+                Releases); al pulsar "Descargar" sales de j75.es.
+            </p>
+        </div>
+    </main>
+    <script>
+        document
+            .querySelectorAll<HTMLAnchorElement>(".tarjeta")
+            .forEach((a) => a.addEventListener("click", () => a.blur()));
+    </script>
+</MainLayout>
+
+<style>
+    .herramientas {
+        padding: 7.5rem 1rem 5rem;
+        font-size: 17px;
+        line-height: 1.5;
+        color: #fff;
+    }
+    .herramientas-wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .herramientas h1 {
+        margin: 0 0 1rem;
+        font-size: 2.5rem;
+        font-weight: 400;
+    }
+    .herramientas h2 {
+        margin: 2.5rem 0 1rem;
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+    .herramientas .lead {
+        max-width: 70ch;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .tarjetas {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 16px;
+    }
+    .tarjeta {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 18px;
+        color: #fff;
+        text-decoration: none;
+        background: rgba(10, 7, 22, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        transition:
+            border-color 0.2s,
+            background-color 0.2s;
+    }
+    .tarjeta:hover {
+        border-color: #dd356e;
+        background: rgba(221, 53, 110, 0.1);
+    }
+    .tarjeta:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    .tarjeta:focus-visible {
+        outline: 2px solid #dd356e;
+        outline-offset: 2px;
+    }
+    .tarjeta h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+    .tarjeta p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.7);
+        flex-grow: 1;
+    }
+    .tarjeta .meta {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.5);
+    }
+    .tarjeta .accion {
+        margin-top: 6px;
+        color: #ff8fb5;
+        font-weight: 500;
+    }
+
+    .vacio {
+        color: rgba(255, 255, 255, 0.5);
+    }
+    .aviso {
+        margin-top: 2.5rem;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.5);
+        max-width: 70ch;
+    }
+
+    @media (max-width: 640px) {
+        .herramientas h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
